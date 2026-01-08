@@ -1,16 +1,20 @@
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, Link } from "react-router-dom";
 import { PageShell } from "@/components/layout/PageShell";
 import { Heading } from "@/components/typography/Heading";
 import { Paragraph } from "@/components/typography/Paragraph";
 import { Blockquote } from "@/components/typography/Blockquote";
 import { Divider } from "@/components/typography/Divider";
 import { articles } from "@/content/articles";
+import { authors } from "@/content/authors";
 
 const ArticlePage = () => {
   const { slug } = useParams<{ slug: string }>();
   const article = articles.find((a) => a.slug === slug);
 
   if (!article) return <Navigate to="/404" replace />;
+
+  const author = authors.find((a) => a.id === article.authorId);
+
 
   return (
     <PageShell>
@@ -39,6 +43,17 @@ const ArticlePage = () => {
           )}
           <p className="mt-3 text-xs text-muted-foreground">
             {new Date(article.date).toLocaleDateString()} • {article.readingTimeMinutes} min read
+            {author && (
+              <>
+                {" "}•{" "}
+                <Link
+                  to={`/authors/${author.slug}`}
+                  className="font-medium uppercase tracking-wide text-primary underline-offset-4 hover:underline"
+                >
+                  {author.name}
+                </Link>
+              </>
+            )}
           </p>
         </header>
 

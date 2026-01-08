@@ -8,6 +8,7 @@ export interface ArticleMeta {
   tags: string[];
   featured?: boolean;
   summary: string;
+  authorId: string;
 }
 
 export const articles: ArticleMeta[] = [
@@ -22,6 +23,7 @@ export const articles: ArticleMeta[] = [
     featured: true,
     summary:
       "A look at how crypto-native readers actually consume long-form research, and what that means for layout, typography, and navigation.",
+    authorId: "research-desk",
   },
   {
     slug: "signal-over-noise-in-crypto-markets",
@@ -32,6 +34,7 @@ export const articles: ArticleMeta[] = [
     tags: ["Macro", "Market Structure"],
     summary:
       "Frameworks for separating structural shifts from narrative-driven volatility in crypto markets.",
+    authorId: "research-desk",
   },
 ];
 

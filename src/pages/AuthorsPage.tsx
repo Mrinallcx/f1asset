@@ -1,6 +1,8 @@
 import { PageShell } from "@/components/layout/PageShell";
 import { Heading } from "@/components/typography/Heading";
 import { Paragraph } from "@/components/typography/Paragraph";
+import { authors } from "@/content/authors";
+import { Link } from "react-router-dom";
 
 const AuthorsPage = () => {
   return (
@@ -13,14 +15,22 @@ const AuthorsPage = () => {
           </Paragraph>
         </header>
 
-        <section className="rounded-lg border bg-card p-6">
-          <h2 className="text-base font-semibold tracking-tight text-foreground">Research Desk</h2>
-          <p className="mt-1 text-xs text-muted-foreground">Collective byline</p>
-          <Paragraph className="mt-3 text-sm">
-            The Research Desk is a collective pseudonym for the writers, analysts, and editors contributing to this
-            journal. Articles published under this byline reflect a synthesis of perspectives from market structure,
-            protocol design, and long-horizon investing.
-          </Paragraph>
+        <section className="space-y-3">
+          {authors.map((author) => (
+            <Link
+              key={author.id}
+              to={`/authors/${author.slug}`}
+              className="flex items-center gap-3 rounded-lg border bg-card p-4 text-sm transition-colors hover:bg-secondary"
+            >
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-xs font-semibold text-secondary-foreground">
+                {author.avatarInitials}
+              </div>
+              <div>
+                <p className="font-semibold text-foreground">{author.name}</p>
+                <p className="text-[11px] text-muted-foreground">{author.role}</p>
+              </div>
+            </Link>
+          ))}
         </section>
       </article>
     </PageShell>
