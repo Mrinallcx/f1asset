@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react";
-
+import { Link } from "react-router-dom";
 export const SiteFooter = () => {
   const [email, setEmail] = useState("");
 
@@ -20,6 +20,20 @@ export const SiteFooter = () => {
           <p className="leading-relaxed">
             Crypto assets are volatile and risky. Nothing on this site is financial advice.
           </p>
+          <nav className="flex flex-wrap gap-x-4 gap-y-1 text-[11px]">
+            <Link to="/privacy-policy" className="hover:text-foreground underline underline-offset-4">
+              Privacy policy
+            </Link>
+            <Link to="/terms" className="hover:text-foreground underline underline-offset-4">
+              Terms & conditions
+            </Link>
+            <Link to="/user-policy" className="hover:text-foreground underline underline-offset-4">
+              User policy
+            </Link>
+            <Link to="/cookie-policy" className="hover:text-foreground underline underline-offset-4">
+              Cookie policy
+            </Link>
+          </nav>
         </div>
         <form onSubmit={handleSubmit} className="flex w-full max-w-xs flex-col gap-2 text-[11px] sm:text-xs">
           <label htmlFor="email" className="font-medium uppercase tracking-wide text-foreground">
