@@ -14,6 +14,22 @@ const ArticlePage = () => {
 
   return (
     <PageShell>
+      <div className="mx-auto mb-6 flex max-w-3xl items-center justify-between text-xs text-muted-foreground">
+        <button
+          type="button"
+          onClick={() => window.history.back()}
+          className="font-medium uppercase tracking-wide text-primary underline-offset-4 hover:underline"
+        >
+          ← Back
+        </button>
+        <button
+          type="button"
+          onClick={() => (window.location.href = "/")}
+          className="font-medium uppercase tracking-wide text-primary underline-offset-4 hover:underline"
+        >
+          Home
+        </button>
+      </div>
       <article className="mx-auto max-w-3xl">
         <header className="mb-10">
           <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{article.category}</p>
