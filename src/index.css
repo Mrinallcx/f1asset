@@ -18,8 +18,8 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 4%;
 
-    /* Accent: muted blue for links/highlights (#2563EB-ish) */
-    --primary: 217 84% 40%;
+    /* Accent: golden primary for links/highlights */
+    --primary: 46 90% 55%; /* golden */
     --primary-foreground: 210 40% 98%;
 
     --secondary: 216 33% 97%;
@@ -28,7 +28,7 @@ All colors MUST be HSL.
     --muted: 216 33% 97%;
     --muted-foreground: 210 6% 40%; /* ~#5F6368 */
 
-    --accent: 217 84% 56%;
+    --accent: 46 90% 55%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84% 60%;
@@ -36,7 +36,7 @@ All colors MUST be HSL.
 
     --border: 220 13% 91%; /* ~#E5E7EB */
     --input: 220 13% 91%;
-    --ring: 217 84% 56%;
+    --ring: 46 90% 55%;
 
     --radius: 0.5rem;
 
