@@ -63,10 +63,13 @@ const ArticlePage = () => {
         <Divider />
 
         <footer className="mt-6 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
-          <p>
-            Tags: {article.tags.join(", ")}
-          </p>
-          <p>Author block placeholder</p>
+          <p>Tags: {article.tags.join(", ")}</p>
+          <a
+            href="/authors"
+            className="font-medium uppercase tracking-wide text-primary underline-offset-4 hover:underline"
+          >
+            Research Desk
+          </a>
         </footer>
       </article>
     </PageShell>
