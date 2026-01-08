@@ -11,6 +11,7 @@ import CategoryPage from "./pages/CategoryPage";
 import CategoriesIndex from "./pages/CategoriesIndex";
 import AboutPage from "./pages/AboutPage";
 import AuthorsPage from "./pages/AuthorsPage";
+import AuthorDetailPage from "./pages/AuthorDetailPage";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/categories/:slug" element={<CategoryPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/authors" element={<AuthorsPage />} />
+          <Route path="/authors/:slug" element={<AuthorDetailPage />} />
           <Route path="/404" element={<NotFound />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
