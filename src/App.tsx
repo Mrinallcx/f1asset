@@ -12,6 +12,10 @@ import CategoriesIndex from "./pages/CategoriesIndex";
 import AboutPage from "./pages/AboutPage";
 import AuthorsPage from "./pages/AuthorsPage";
 import AuthorDetailPage from "./pages/AuthorDetailPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import TermsPage from "./pages/TermsPage";
+import UserPolicyPage from "./pages/UserPolicyPage";
+import CookiePolicyPage from "./pages/CookiePolicyPage";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +34,10 @@ const App = () => (
           <Route path="/about" element={<AboutPage />} />
           <Route path="/authors" element={<AuthorsPage />} />
           <Route path="/authors/:slug" element={<AuthorDetailPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/user-policy" element={<UserPolicyPage />} />
+          <Route path="/cookie-policy" element={<CookiePolicyPage />} />
           <Route path="/404" element={<NotFound />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
