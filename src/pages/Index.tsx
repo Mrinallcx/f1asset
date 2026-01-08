@@ -39,17 +39,33 @@ const Index = () => {
             View all
           </Link>
         </div>
-        <div className="space-y-6">
+        <div className="grid gap-6 sm:grid-cols-2">
           {latest.map((article) => (
-            <article key={article.slug} className="border-b pb-4 last:border-b-0 last:pb-0">
-              <Link to={`/blog/${article.slug}`} className="block">
-                <h3 className="text-sm sm:text-base font-semibold tracking-tight text-foreground">
-                  {article.title}
-                </h3>
-                <p className="mt-1 text-xs text-muted-foreground">{article.summary}</p>
-                <p className="mt-2 text-[11px] text-muted-foreground">
-                  {new Date(article.date).toLocaleDateString()} • {article.readingTimeMinutes} min read • {article.category}
-                </p>
+            <article
+              key={article.slug}
+              className="overflow-hidden rounded-lg border bg-card transition-colors hover:bg-secondary"
+            >
+              <Link to={`/blog/${article.slug}`} className="flex h-full flex-col">
+                <div className="overflow-hidden">
+                  <img
+                    src="/placeholder.svg"
+                    alt={article.title}
+                    loading="lazy"
+                    className="h-40 w-full border-b object-cover"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-4">
+                  <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                    {article.category}
+                  </p>
+                  <h3 className="mt-1 text-sm sm:text-base font-semibold tracking-tight text-foreground">
+                    {article.title}
+                  </h3>
+                  <p className="mt-2 line-clamp-3 text-xs text-muted-foreground">{article.summary}</p>
+                  <p className="mt-3 text-[11px] text-muted-foreground">
+                    {new Date(article.date).toLocaleDateString()} • Research Desk
+                  </p>
+                </div>
               </Link>
             </article>
           ))}
