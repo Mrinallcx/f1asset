@@ -53,7 +53,7 @@ const ArticlePage = () => {
           </p>
 
           {/* Optional hero / header image driven by article metadata */}
-          {article.thumbnailImage && (
+          {article.thumbnailImage && !isSilverCustodyArticle && (
             <div className="mt-6 overflow-hidden rounded-lg border bg-card">
               <AspectRatio ratio={16 / 9}>
                 <img
@@ -83,8 +83,8 @@ const ArticlePage = () => {
                   <figure className="mt-6 space-y-3">
                     <AspectRatio ratio={16 / 9}>
                       <img
-                        src={article.thumbnailImage ?? "/placeholder.svg"}
-                        alt={article.thumbnailImageAlt ?? "Silver bars in a high-security vault"}
+                        src="https://firebasestorage.googleapis.com/v0/b/totofinance-video.firebasestorage.app/o/silver.avif?alt=media&token=265b2ee3-78c8-4489-8aa9-080a4e23269c"
+                        alt="High-security vault storing physical silver bars backing tokenized silver"
                         loading="lazy"
                         className="h-full w-full rounded-md border object-cover"
                       />
