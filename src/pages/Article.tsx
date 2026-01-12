@@ -6,35 +6,22 @@ import { Blockquote } from "@/components/typography/Blockquote";
 import { Divider } from "@/components/typography/Divider";
 import { articles } from "@/content/articles";
 import { authors } from "@/content/authors";
-
 const ArticlePage = () => {
-  const { slug } = useParams<{ slug: string }>();
-  const article = articles.find((a) => a.slug === slug);
-
+  const {
+    slug
+  } = useParams<{
+    slug: string;
+  }>();
+  const article = articles.find(a => a.slug === slug);
   if (!article) return <Navigate to="/404" replace />;
-
-  const author = authors.find((a) => a.id === article.authorId);
-
-  const isSilverCustodyArticle =
-    article.slug === "behind-the-scenes-custody-vaulting-and-audits-for-tokenized-silver";
-
-  return (
-    <PageShell>
+  const author = authors.find(a => a.id === article.authorId);
+  const isSilverCustodyArticle = article.slug === "behind-the-scenes-custody-vaulting-and-audits-for-tokenized-silver";
+  return <PageShell>
       <div className="mx-auto mb-6 flex max-w-3xl items-center justify-between text-xs text-muted-foreground">
-        <button
-          type="button"
-          onClick={() => window.history.back()}
-          className="font-medium uppercase tracking-wide text-primary underline-offset-4 hover:underline"
-        >
+        <button type="button" onClick={() => window.history.back()} className="font-medium uppercase tracking-wide text-primary underline-offset-4 hover:underline">
           Back
         </button>
-        <button
-          type="button"
-          onClick={() => (window.location.href = "/")}
-          className="font-medium uppercase tracking-wide text-primary underline-offset-4 hover:underline"
-        >
-          Home
-        </button>
+        
       </div>
       <article className="mx-auto max-w-3xl">
         <header className="mb-10">
@@ -45,24 +32,18 @@ const ArticlePage = () => {
           {article.subtitle && <Paragraph className="mt-2 max-w-2xl">{article.subtitle}</Paragraph>}
           <p className="mt-3 text-xs text-muted-foreground">
             {new Date(article.date).toLocaleDateString()} • {article.readingTimeMinutes} min read
-            {author && (
-              <>
+            {author && <>
                 {" "}•{" "}
-                <Link
-                  to={`/authors/${author.slug}`}
-                  className="font-medium uppercase tracking-wide text-primary underline-offset-4 hover:underline"
-                >
+                <Link to={`/authors/${author.slug}`} className="font-medium uppercase tracking-wide text-primary underline-offset-4 hover:underline">
                   {author.name}
                 </Link>
-              </>
-            )}
+              </>}
           </p>
         </header>
 
         <div className="flex flex-col gap-10">
           <section className="space-y-10">
-            {isSilverCustodyArticle ? (
-              <>
+            {isSilverCustodyArticle ? <>
                 <section id="intro">
                   <Heading level={2}>Why custody, vaulting, and audits matter</Heading>
                   <Paragraph>
@@ -183,9 +164,7 @@ const ArticlePage = () => {
                     treat tokenized silver as a real market, not just a niche experiment.
                   </Paragraph>
                 </section>
-              </>
-            ) : (
-              <>
+              </> : <>
                 <section id="overview">
                   <Heading level={2}>Overview</Heading>
                   <Paragraph>
@@ -216,8 +195,7 @@ const ArticlePage = () => {
                     meta) sit together on the page.
                   </Paragraph>
                 </section>
-              </>
-            )}
+              </>}
           </section>
         </div>
 
@@ -225,16 +203,11 @@ const ArticlePage = () => {
 
         <footer className="mt-6 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
           <p>Tags: {article.tags.join(", ")}</p>
-          <a
-            href="/authors"
-            className="font-medium uppercase tracking-wide text-primary underline-offset-4 hover:underline"
-          >
+          <a href="/authors" className="font-medium uppercase tracking-wide text-primary underline-offset-4 hover:underline">
             Research Desk
           </a>
         </footer>
       </article>
-    </PageShell>
-  );
+    </PageShell>;
 };
-
 export default ArticlePage;
