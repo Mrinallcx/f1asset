@@ -9,6 +9,8 @@ export interface ArticleMeta {
   featured?: boolean;
   summary: string;
   authorId: string;
+  thumbnailImage?: string;
+  thumbnailImageAlt?: string;
 }
 
 export const articles: ArticleMeta[] = [
@@ -39,7 +41,8 @@ export const articles: ArticleMeta[] = [
   {
     slug: "behind-the-scenes-custody-vaulting-and-audits-for-tokenized-silver",
     title: "Behind the Scenes: Custody, Vaulting, and Audits for Tokenized Silver",
-    subtitle: "How custody, vaulting, and audits keep tokenized silver actually backed by real metal.",
+    subtitle:
+      "How custody, vaulting, and audits keep tokenized silver actually backed by real metal.",
     date: "2025-01-05",
     readingTimeMinutes: 9,
     category: "Infrastructure",
@@ -48,6 +51,8 @@ export const articles: ArticleMeta[] = [
     summary:
       "A walkthrough of how custody, professional vaulting, insurance, and independent audits work together so every silver token is matched by real vaulted metal.",
     authorId: "research-desk",
+    thumbnailImage: "/placeholder.svg",
+    thumbnailImageAlt: "Silver bars stacked in a professional vault representing tokenized silver backing",
   },
 ];
  
