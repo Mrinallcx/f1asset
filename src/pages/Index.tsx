@@ -49,8 +49,8 @@ const Index = () => {
               <Link to={`/blog/${article.slug}`} className="flex h-full flex-col">
                 <div className="overflow-hidden">
                   <img
-                    src="/placeholder.svg"
-                    alt={article.title}
+                    src={article.thumbnailImage ?? "/placeholder.svg"}
+                    alt={article.thumbnailImageAlt ?? article.title}
                     loading="lazy"
                     className="h-40 w-full border-b object-cover"
                   />
