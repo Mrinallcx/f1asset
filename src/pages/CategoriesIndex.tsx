@@ -26,7 +26,7 @@ const CategoriesIndex = () => {
               className="block rounded-lg border bg-card p-4 text-sm transition-colors hover:bg-secondary"
             >
               <div className="flex items-baseline justify-between gap-2">
-                <span className="font-semibold text-foreground">{category}</span>
+                <span className="text-sm text-foreground">{category}</span>
                 <span className="text-xs text-muted-foreground">{count} article{count !== 1 ? "s" : ""}</span>
               </div>
             </Link>
