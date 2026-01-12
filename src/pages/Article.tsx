@@ -66,96 +66,121 @@ const ArticlePage = () => {
                 <section id="intro">
                   <Heading level={2}>Why custody, vaulting, and audits matter</Heading>
                   <Paragraph>
-                    Tokenized silver only works if every on-chain token is credibly backed by real metal sitting safely in
-                    a vault. This piece walks through how custody, vaulting, and independent audits actually work in
-                    practice so you can judge whether a given structure is trustworthy.
+                    Tokenized silver only works if the physical metal is genuinely there, securely stored, and
+                    independently verified at all times. Custody, vaulting, and audits are the backbone of any credible
+                    silver token project.
                   </Paragraph>
                 </section>
 
-                <section id="custody">
-                  <Heading level={2}>1. What custody really means for tokenized silver</Heading>
+                <section id="physical-layer">
+                  <Heading level={2}>Physical layer: vaulting the silver</Heading>
                   <Paragraph>
-                    Custody has two distinct layers: custody of the physical silver itself, and custody of the digital
-                    tokens that represent claims on that metal. Most robust setups separate these roles so that
-                    professional metal custodians handle bars, while regulated digital custodians or smart-contract
-                    systems manage token issuance, burning, and large transfers.
+                    Reputable issuers store silver in high-security, insured vaults managed by specialist third-party
+                    custodians in jurisdictions with strong property rights. Bars are typically LBMA-standard and uniquely
+                    identified so that they can be tracked through time.
                   </Paragraph>
-                  <Paragraph>
-                    The legal structure is critical. Fully allocated models give holders direct title to specific bars
-                    sitting in segregated accounts. In a bankruptcy, that metal should sit outside the issuer&apos;s estate
-                    rather than being treated as a general asset pool.
-                  </Paragraph>
+                  <Heading level={3}>Key vaulting practices</Heading>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>
+                      Segregated or allocated storage so each bar is clearly owned on behalf of token holders, not pooled
+                      into an omnibus account.
+                    </li>
+                    <li>
+                      Comprehensive insurance covering theft, damage, and key operational risks at the vault level, with
+                      policy details available to investors.
+                    </li>
+                  </ul>
                 </section>
 
-                <section id="vaulting">
-                  <Heading level={2}>2. Physical vaulting: where and how bars are stored</Heading>
+                <section id="legal-custody">
+                  <Heading level={2}>Legal custody structure</Heading>
                   <Paragraph>
-                    Tokenized silver generally relies on regulated, high-security vaults — the same infrastructure used by
-                    bullion banks and metal ETFs. Platforms typically partner with established third-party vault
-                    providers in financial hubs like Switzerland, Liechtenstein, Australia, or the UAE instead of
-                    building their own facilities.
+                    Many projects adopt a dual-layer model: a legal issuer in a regulated jurisdiction and independent
+                    vaulting entities that physically hold the silver. Robust structures give token holders a legally
+                    recognized claim on the underlying metal rather than a vague promise.
                   </Paragraph>
-                  <Paragraph>
-                    Each bar is weighed, tested for purity, and assigned a unique identifier so that the vault, issuer,
-                    and auditors can reconcile inventory against tokens in circulation. Tamper-evident seals and
-                    standardized bar lists make it possible to cross-check reserves at any time.
-                  </Paragraph>
+                  <Heading level={3}>Separation of roles</Heading>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>
+                      The entity that mints and burns tokens is separated from the vault operator to reduce conflicts of
+                      interest and clarify accountability.
+                    </li>
+                    <li>
+                      Custody agreements spell out storage conditions, insurance, reporting, redemption mechanics, and
+                      what happens in a default or insolvency scenario.
+                    </li>
+                  </ul>
                 </section>
 
-                <section id="digital-custody">
-                  <Heading level={2}>3. Digital custody: wallets, keys, and smart contracts</Heading>
+                <section id="digital-layer">
+                  <Heading level={2}>Digital layer: on-chain custody and controls</Heading>
                   <Paragraph>
-                    On the digital side, treasury tokens and mint/burn permissions sit in secure wallets, often backed by
-                    hardware security modules or multi-signature schemes. Smart contracts encode the rules for issuing
-                    new tokens when vault inventory increases and burning tokens when investors redeem for metal or cash.
+                    Every token issuance, transfer, and burn is recorded on a blockchain, creating an immutable ledger of
+                    ownership and circulating supply. Smart contracts are typically audited to prevent unauthorized
+                    minting, arbitrary supply changes, or hidden admin backdoors.
                   </Paragraph>
-                  <Paragraph>
-                    Mature platforms combine audited contracts with strict operational controls. Sensitive actions like
-                    changing vault addresses or updating minting keys are gated behind multi-signature approvals and
-                    internal procedures to reduce key-holder and insider risk.
-                  </Paragraph>
+                  <Heading level={3}>Technical safeguards</Heading>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>
+                      Multi-signature wallets and hardware security modules (HSMs) control mint and burn keys, reducing
+                      the impact of a single compromised operator.
+                    </li>
+                    <li>
+                      Integrations between vault reporting systems and tokenization platforms ensure tokens are only
+                      minted after vault receipt and verification, supporting automated reconciliation.
+                    </li>
+                  </ul>
                 </section>
 
                 <section id="audits">
-                  <Heading level={2}>4. Audits and proof-of-reserves</Heading>
+                  <Heading level={2}>Proof of reserves and audit mechanisms</Heading>
                   <Paragraph>
-                    Independent third-party audits are what tie the physical and digital layers together. Auditors verify
-                    bar lists, perform sample or full counts, and reconcile total weight and purity against the token
-                    supply visible on-chain. The goal is simple: every token should map to a specific amount of vaulted
-                    silver.
+                    Independent third-party auditors or assayers verify that the total silver in vaults matches or
+                    exceeds the total token supply, publishing regular proof-of-reserves style reports.
                   </Paragraph>
-                  <Paragraph>
-                    Many issuers commission periodic audits and publish signed reports. Others move toward
-                    near-real-time attestations, where vault data feeds or APIs are linked to dashboards that compare
-                    reserves with circulating supply in close to real time.
-                  </Paragraph>
+                  <Heading level={3}>Audit techniques and standards</Heading>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>
+                      Periodic physical inspections, sampling bars, and reviewing purity certificates from recognized
+                      refiners.
+                    </li>
+                    <li>
+                      Near real-time reconciliation where bar movements in the vault trigger token mints or burns so the
+                      1:1 backing is preserved.
+                    </li>
+                  </ul>
                 </section>
 
-                <section id="flows">
-                  <Heading level={2}>5. Operational flows: from bar to token and back again</Heading>
+                <section id="transparency">
+                  <Heading level={2}>Transparency and investor-facing disclosures</Heading>
                   <Paragraph>
-                    New silver tokens are typically minted only after the custodian confirms that bars have arrived,
-                    passed checks, and been added to segregated inventory. On redemption, tokens are burned and
-                    corresponding metal is either shipped, made available for collection, or liquidated with proceeds
-                    paid out.
+                    Strong projects treat transparency as a feature. They publish where metal is stored, who the
+                    custodians are, and how to access audit reports and insurance confirmations.
                   </Paragraph>
-                  <Paragraph>
-                    Behind the scenes, reconciliation processes keep the vault ledger, internal systems, and blockchain
-                    state in sync so that no token exists without a bar and no bar leaves without a matching burn.
-                  </Paragraph>
+                  <Heading level={3}>Red flags to watch</Heading>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>
+                      No independent audits or only vague descriptions of storage partners and legal claims to the
+                      silver.
+                    </li>
+                    <li>
+                      Centralized mint keys with weak controls or no audit trail, enabling silent over-issuance of
+                      unbacked tokens.
+                    </li>
+                  </ul>
                 </section>
 
                 <section id="regulation">
-                  <Heading level={2}>6. Regulation, compliance, and why jurisdiction matters</Heading>
+                  <Heading level={2}>Regulatory and compliance considerations</Heading>
                   <Paragraph>
-                    Jurisdictions like Switzerland and Liechtenstein have introduced dedicated frameworks for tokenized
-                    assets, including precious metals. Using regulated custodians for both the metal and the digital
-                    tokens strengthens investor protections, especially in stress scenarios.
+                    Jurisdictions like Switzerland, Liechtenstein, Luxembourg, and Singapore are popular homes for
+                    precious-metal token projects because they provide clearer rules around tokenized commodities and
+                    custodial duties.
                   </Paragraph>
                   <Paragraph>
-                    For serious investors, institutional-grade custody, clear disclosures, and transparent audits are the
-                    baseline. The structure behind a tokenized silver product often matters more than the user interface
-                    — it&apos;s what ultimately determines whether each token is actually backed by the metal it promises.
+                    In practice, serious platforms align with KYC/AML standards and, where necessary, securities or
+                    e-money rules. The more robust the regulatory fit, the easier it is for institutional capital to
+                    treat tokenized silver as a real market, not just a niche experiment.
                   </Paragraph>
                 </section>
               </>
