@@ -36,6 +36,19 @@ export const articles: ArticleMeta[] = [
       "Frameworks for separating structural shifts from narrative-driven volatility in crypto markets.",
     authorId: "research-desk",
   },
+  {
+    slug: "behind-the-scenes-custody-vaulting-and-audits-for-tokenized-silver",
+    title: "Behind the Scenes: Custody, Vaulting, and Audits for Tokenized Silver",
+    subtitle: "How custody, vaulting, and audits keep tokenized silver actually backed by real metal.",
+    date: "2025-01-05",
+    readingTimeMinutes: 9,
+    category: "Infrastructure",
+    tags: ["Tokenization", "Commodities", "RWA"],
+    featured: false,
+    summary:
+      "A walkthrough of how custody, professional vaulting, insurance, and independent audits work together so every silver token is matched by real vaulted metal.",
+    authorId: "research-desk",
+  },
 ];
-
+ 
 export const allCategories = Array.from(new Set(articles.map((a) => a.category))).sort();
