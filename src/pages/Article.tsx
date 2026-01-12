@@ -4,25 +4,32 @@ import { Heading } from "@/components/typography/Heading";
 import { Paragraph } from "@/components/typography/Paragraph";
 import { Blockquote } from "@/components/typography/Blockquote";
 import { Divider } from "@/components/typography/Divider";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { articles } from "@/content/articles";
 import { authors } from "@/content/authors";
+
 const ArticlePage = () => {
-  const {
-    slug
-  } = useParams<{
-    slug: string;
-  }>();
-  const article = articles.find(a => a.slug === slug);
+  const { slug } = useParams<{ slug: string }>();
+
+  const article = articles.find((a) => a.slug === slug);
   if (!article) return <Navigate to="/404" replace />;
-  const author = authors.find(a => a.id === article.authorId);
-  const isSilverCustodyArticle = article.slug === "behind-the-scenes-custody-vaulting-and-audits-for-tokenized-silver";
-  return <PageShell>
+
+  const author = authors.find((a) => a.id === article.authorId);
+  const isSilverCustodyArticle =
+    article.slug === "behind-the-scenes-custody-vaulting-and-audits-for-tokenized-silver";
+
+  return (
+    <PageShell>
       <div className="mx-auto mb-6 flex max-w-3xl items-center justify-between text-xs text-muted-foreground">
-        <button type="button" onClick={() => window.history.back()} className="font-medium uppercase tracking-wide text-primary underline-offset-4 hover:underline">
+        <button
+          type="button"
+          onClick={() => window.history.back()}
+          className="font-medium uppercase tracking-wide text-primary underline-offset-4 hover:underline"
+        >
           Back
         </button>
-        
       </div>
+
       <article className="mx-auto max-w-3xl">
         <header className="mb-10">
           <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
@@ -32,18 +39,38 @@ const ArticlePage = () => {
           {article.subtitle && <Paragraph className="mt-2 max-w-2xl">{article.subtitle}</Paragraph>}
           <p className="mt-3 text-xs text-muted-foreground">
             {new Date(article.date).toLocaleDateString()} • {article.readingTimeMinutes} min read
-            {author && <>
+            {author && (
+              <>
                 {" "}•{" "}
-                <Link to={`/authors/${author.slug}`} className="font-medium uppercase tracking-wide text-primary underline-offset-4 hover:underline">
+                <Link
+                  to={`/authors/${author.slug}`}
+                  className="font-medium uppercase tracking-wide text-primary underline-offset-4 hover:underline"
+                >
                   {author.name}
                 </Link>
-              </>}
+              </>
+            )}
           </p>
+
+          {/* Optional hero / header image driven by article metadata */}
+          {article.thumbnailImage && (
+            <div className="mt-6 overflow-hidden rounded-lg border bg-card">
+              <AspectRatio ratio={16 / 9}>
+                <img
+                  src={article.thumbnailImage}
+                  alt={article.thumbnailImageAlt ?? article.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
+              </AspectRatio>
+            </div>
+          )}
         </header>
 
         <div className="flex flex-col gap-10">
           <section className="space-y-10">
-            {isSilverCustodyArticle ? <>
+            {isSilverCustodyArticle ? (
+              <>
                 <section id="intro">
                   <Heading level={2}>Why custody, vaulting, and audits matter</Heading>
                   <Paragraph>
@@ -51,6 +78,21 @@ const ArticlePage = () => {
                     independently verified at all times. Custody, vaulting, and audits are the backbone of any credible
                     silver token project.
                   </Paragraph>
+
+                  {/* Inline illustrative image inside the article body */}
+                  <figure className="mt-6 space-y-3">
+                    <AspectRatio ratio={16 / 9}>
+                      <img
+                        src={article.thumbnailImage ?? "/placeholder.svg"}
+                        alt={article.thumbnailImageAlt ?? "Silver bars in a high-security vault"}
+                        loading="lazy"
+                        className="h-full w-full rounded-md border object-cover"
+                      />
+                    </AspectRatio>
+                    <figcaption className="text-xs text-muted-foreground">
+                      Professionally vaulted silver bars form the real-world backing behind tokenized silver.
+                    </figcaption>
+                  </figure>
                 </section>
 
                 <section id="physical-layer">
@@ -164,7 +206,9 @@ const ArticlePage = () => {
                     treat tokenized silver as a real market, not just a niche experiment.
                   </Paragraph>
                 </section>
-              </> : <>
+              </>
+            ) : (
+              <>
                 <section id="overview">
                   <Heading level={2}>Overview</Heading>
                   <Paragraph>
@@ -195,7 +239,8 @@ const ArticlePage = () => {
                     meta) sit together on the page.
                   </Paragraph>
                 </section>
-              </>}
+              </>
+            )}
           </section>
         </div>
 
@@ -203,11 +248,16 @@ const ArticlePage = () => {
 
         <footer className="mt-6 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
           <p>Tags: {article.tags.join(", ")}</p>
-          <a href="/authors" className="font-medium uppercase tracking-wide text-primary underline-offset-4 hover:underline">
+          <a
+            href="/authors"
+            className="font-medium uppercase tracking-wide text-primary underline-offset-4 hover:underline"
+          >
             Research Desk
           </a>
         </footer>
       </article>
-    </PageShell>;
+    </PageShell>
+  );
 };
+
 export default ArticlePage;

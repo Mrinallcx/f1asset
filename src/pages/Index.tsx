@@ -2,11 +2,12 @@ import { PageShell } from "@/components/layout/PageShell";
 import { Heading } from "@/components/typography/Heading";
 import { Paragraph } from "@/components/typography/Paragraph";
 import { articles, allCategories } from "@/content/articles";
+import type { ArticleMeta } from "@/content/articles";
 import { Link } from "react-router-dom";
 
 const Index = () => {
-  const featured = articles.find((a) => a.featured) ?? articles[0];
-  const latest = articles.slice(0, 3);
+  const featured: ArticleMeta = articles.find((a) => a.featured) ?? articles[0];
+  const latest: ArticleMeta[] = articles.slice(0, 3);
 
   return (
     <PageShell>
