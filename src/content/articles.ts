@@ -51,6 +51,9 @@ export const articles: ArticleMeta[] = [
     summary:
       "A walkthrough of how custody, professional vaulting, insurance, and independent audits work together so every silver token is matched by real vaulted metal.",
     authorId: "research-desk",
+    thumbnailImage:
+      "https://firebasestorage.googleapis.com/v0/b/totofinance-video.firebasestorage.app/o/silver.avif?alt=media&token=265b2ee3-78c8-4489-8aa9-080a4e23269c",
+    thumbnailImageAlt: "High-security vault storing physical silver bars backing tokenized silver",
   },
 ];
  
