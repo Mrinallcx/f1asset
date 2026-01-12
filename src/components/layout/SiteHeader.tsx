@@ -10,7 +10,7 @@ const navItems = [
 ];
 
 export const SiteHeader = () => (
-  <header className="border-b bg-background/80 backdrop-blur">
+  <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur">
     <div className="container flex h-16 items-center justify-between">
       <NavLink to="/" className="text-sm font-medium tracking-tight text-foreground hover:text-foreground/80">
         Minimal Crypto Journal
