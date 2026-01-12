@@ -45,7 +45,7 @@ export const articles: ArticleMeta[] = [
       "How custody, vaulting, and audits keep tokenized silver actually backed by real metal.",
     date: "2025-01-05",
     readingTimeMinutes: 9,
-    category: "Infrastructure",
+    category: "Tokenization",
     tags: ["Tokenization", "Commodities", "RWA"],
     featured: false,
     summary:
