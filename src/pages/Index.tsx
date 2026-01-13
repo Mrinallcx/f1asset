@@ -7,7 +7,9 @@ import { Link } from "react-router-dom";
 
 const Index = () => {
   const featured: ArticleMeta = articles.find((a) => a.featured) ?? articles[0];
-  const latest: ArticleMeta[] = articles.slice(0, 3);
+  const latest: ArticleMeta[] = [...articles]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 3);
 
   return (
     <PageShell>
