@@ -18,6 +18,8 @@ const ArticlePage = () => {
   const isSilverCustodyArticle =
     article.slug === "behind-the-scenes-custody-vaulting-and-audits-for-tokenized-silver";
   const isTokenizedVsEtfsArticle = article.slug === "tokenized-silver-vs-etfs-and-bullion";
+  const isTokenizedVolumesArticle =
+    article.slug === "why-tokenized-silver-volumes-are-exploding-amid-record-silver-prices";
 
   return (
     <PageShell>
@@ -388,8 +390,128 @@ const ArticlePage = () => {
                   </Paragraph>
                 </section>
               </>
-            ) : (
+            ) : isTokenizedVolumesArticle ? (
+              <>
+                <section id="intro">
+                  <Heading level={2}>
+                    Why Tokenized Silver Volumes Are Exploding Amid Record Silver Prices
+                  </Heading>
+                  <Paragraph>
+                    Tokenized silver trading volumes are surging as record silver prices collide with a faster, more
+                    accessible digital way to gain exposure to the metal. Rising macro uncertainty, strong industrial
+                    demand, and tighter physical supply are pushing investors toward silver—and increasingly toward
+                    on-chain silver tokens instead of only futures or ETFs.
+                  </Paragraph>
+                  <Paragraph>
+                    This shift is not just about price. It reflects where modern market participants prefer to trade:
+                    globally, instantly, and without traditional friction.
+                  </Paragraph>
+                </section>
 
+                <section id="record-prices">
+                  <Heading level={2}>Record prices and a real-world silver squeeze</Heading>
+                  <Paragraph>
+                    Silver recently touched new all-time highs above $80 per ounce before a modest pullback. The rally has
+                    been driven by a combination of strong investor demand amid inflation and macro uncertainty, growing
+                    industrial usage—especially in solar, electronics, and EV supply chains—and supply constraints and
+                    export controls in key producing regions.
+                  </Paragraph>
+                  <Paragraph>
+                    As prices broke out, interest surged across all silver instruments—futures, ETFs, and now tokenized
+                    products. For many investors, especially outside traditional markets, tokenized silver offers the
+                    fastest way to participate in the move.
+                  </Paragraph>
+                </section>
+
+                <section id="hard-data">
+                  <Heading level={2}>Hard data: 1,200% volume growth</Heading>
+                  <Paragraph>
+                    On-chain silver products have recorded explosive growth in a short period:
+                  </Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Approximately 1,200% increase in monthly trading or transfer volume in roughly 30 days.</li>
+                    <li>
+                      300–340% growth in holder addresses, with several tokens crossing 1,000 wallets in a relatively short
+                      timeframe.
+                    </li>
+                    <li>
+                      Around 40%+ increase in net asset value, driven by both rising silver prices and increased on-chain
+                      demand.
+                    </li>
+                  </ul>
+                  <Paragraph>
+                    This pattern suggests broad participation rather than activity driven by a small number of large
+                    holders.
+                  </Paragraph>
+                </section>
+
+                <section id="why-tokens-preferred">
+                  <Heading level={2}>Why investors prefer tokens in this rally</Heading>
+
+                  <Heading level={3}>1. 24/7, borderless silver access</Heading>
+                  <Paragraph>
+                    Tokenized silver trades continuously on blockchain rails, unlike traditional exchanges with fixed
+                    hours. That means immediate reaction to global macro news and weekend events, easy access for non-US
+                    and emerging-market investors, and the ability to trade using stablecoins without local brokerage or
+                    currency friction.
+                  </Paragraph>
+
+                  <Heading level={3}>2. Fractional, low-ticket exposure</Heading>
+                  <Paragraph>
+                    Most silver tokens represent very small units—fractions of an ounce or gram. That enables low-cost
+                    entry even at record prices, supports dollar-cost averaging strategies, and is more accessible than
+                    buying large physical bars or full ETF lots. This structure is especially attractive to retail and
+                    younger investors.
+                  </Paragraph>
+
+                  <Heading level={3}>3. Instant settlement and composability</Heading>
+                  <Paragraph>
+                    Unlike ETFs, tokenized silver settles almost instantly. Tokens can be moved between wallets, exchanges,
+                    and protocols in minutes, used as collateral in DeFi, or traded against stablecoins or paired in
+                    liquidity pools. This composability makes silver tokens more dynamic than static ETF holdings.
+                  </Paragraph>
+                </section>
+
+                <section id="macro-tailwinds">
+                  <Heading level={2}>Macro tailwinds beyond price</Heading>
+                  <Paragraph>
+                    The surge in tokenized silver volume reflects deeper structural changes in financial markets. Real-
+                    world asset tokenization has grown into a multi–tens-of-billions-dollar market. Tokenized treasuries
+                    paved the way; commodities like silver are the next expansion. Institutions and sophisticated traders
+                    are testing blockchain rails for familiar assets.
+                  </Paragraph>
+                  <Paragraph>
+                    Each commodity bull run increasingly routes part of its liquidity through tokenized formats.
+                  </Paragraph>
+                </section>
+
+                <section id="risks">
+                  <Heading level={2}>Risks and open questions</Heading>
+                  <Paragraph>
+                    Despite rapid growth, tokenized silver markets remain early-stage. Liquidity is still concentrated in a
+                    small number of products and platforms; issuer risk, custody structures, and smart-contract security
+                    all matter; and some reported volume figures are based on on-chain transfers rather than officially
+                    confirmed ETF-style data.
+                  </Paragraph>
+                  <Paragraph>
+                    Investors must still evaluate transparency, audits, and redemption mechanisms carefully.
+                  </Paragraph>
+                </section>
+
+                <section id="bigger-picture">
+                  <Heading level={2}>The bigger picture</Heading>
+                  <Paragraph>
+                    This is not just a silver story—it is a broader market-structure shift. Silver is still silver, but the
+                    venue has changed. Trading is gradually moving from COMEX floors and stock exchanges to blockchains,
+                    driven by record prices, macro stress, and the demand for faster, global access.
+                  </Paragraph>
+                  <Paragraph>
+                    As tokenization infrastructure matures, future commodity rallies are likely to see even more volume
+                    flow through on-chain markets.
+                  </Paragraph>
+                </section>
+              </>
+            ) : (
               <>
                 <section id="overview">
                   <Heading level={2}>Overview</Heading>
