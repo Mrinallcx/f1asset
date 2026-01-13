@@ -55,6 +55,19 @@ export const articles: ArticleMeta[] = [
       "https://firebasestorage.googleapis.com/v0/b/totofinance-video.firebasestorage.app/o/silver.avif?alt=media&token=265b2ee3-78c8-4489-8aa9-080a4e23269c",
     thumbnailImageAlt: "High-security vault storing physical silver bars backing tokenized silver",
   },
+  {
+    slug: "tokenized-silver-vs-etfs-and-bullion",
+    title: "How Tokenized Silver Works vs Traditional Silver ETFs and Physical Bullion",
+    subtitle: "A side-by-side look at custody, liquidity, costs, and usability across three ways to hold silver.",
+    date: "2025-01-10",
+    readingTimeMinutes: 9,
+    category: "Tokenization",
+    tags: ["Tokenization", "Commodities", "RWA", "ETFs"],
+    featured: false,
+    summary:
+      "Compares tokenized silver, silver ETFs, and physical bullion on how they handle custody, liquidity, costs, and real-world usability.",
+    authorId: "research-desk",
+  },
 ];
  
 export const allCategories = Array.from(new Set(articles.map((a) => a.category))).sort();
