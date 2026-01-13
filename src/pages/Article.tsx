@@ -17,6 +17,7 @@ const ArticlePage = () => {
   const author = authors.find((a) => a.id === article.authorId);
   const isSilverCustodyArticle =
     article.slug === "behind-the-scenes-custody-vaulting-and-audits-for-tokenized-silver";
+  const isTokenizedVsEtfsArticle = article.slug === "tokenized-silver-vs-etfs-and-bullion";
 
   return (
     <PageShell>
@@ -205,6 +206,121 @@ const ArticlePage = () => {
                     e-money rules. The more robust the regulatory fit, the easier it is for institutional capital to
                     treat tokenized silver as a real market, not just a niche experiment.
                   </Paragraph>
+                </section>
+              </>
+            ) : isTokenizedVsEtfsArticle ? (
+              <>
+                <section id="intro">
+                  <Heading level={2}>Three ways to get silver exposure</Heading>
+                  <Paragraph>
+                    Tokenized silver, silver ETFs, and physical bullion all track the same underlying metal, but they
+                    behave very differently in how you hold, trade, and actually use that exposure.
+                  </Paragraph>
+                </section>
+
+                <section id="tokenized-silver">
+                  <Heading level={2}>How tokenized silver works</Heading>
+                  <Paragraph>
+                    Tokenized silver represents vaulted bars on a blockchain. Each token is linked to a fixed weight of
+                    metal held by a professional custodian, with on-chain supply designed to match off-chain inventory.
+                  </Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Tokens typically live on public chains, so they can sit in standard crypto wallets.</li>
+                    <li>Trading is usually 24/7 on digital asset venues, not limited to stock-market hours.</li>
+                    <li>Some projects allow redemption into physical bars or coins, keeping prices close to spot.</li>
+                  </ul>
+                </section>
+
+                <section id="silver-etfs">
+                  <Heading level={2}>How silver ETFs work</Heading>
+                  <Paragraph>
+                    A silver ETF issues fund units that track a benchmark price, usually by holding silver bullion with a
+                    custodian. Retail investors buy and sell units via brokers during exchange hours.
+                  </Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Only large authorized participants typically create or redeem ETF units directly.</li>
+                    <li>Most investors never touch physical metal; they hold a claim on the fund, not bars.</li>
+                    <li>Expense ratios, brokerage fees, and any tracking error drive long-run performance.</li>
+                  </ul>
+                </section>
+
+                <section id="physical-bullion">
+                  <Heading level={2}>How physical silver bullion works</Heading>
+                  <Paragraph>
+                    Physical bullion means direct ownership of coins, bars, or rounds bought from dealers or mints and
+                    stored personally or in vaults. It removes digital infrastructure risk but adds logistics.
+                  </Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Costs include dealer spreads, shipping, insurance, and sometimes taxes.</li>
+                    <li>Storage needs to handle theft, loss, and disaster scenarios.</li>
+                    <li>Liquidity depends on local markets and dealer networks.</li>
+                  </ul>
+                </section>
+
+                <section id="side-by-side">
+                  <Heading level={2}>Side-by-side comparison</Heading>
+                  <Paragraph>
+                    At a high level, each format represents a different trade-off between convenience, control, and
+                    infrastructure risk.
+                  </Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>
+                      <strong>Custody:</strong> Tokens and ETFs rely on professional custodians; bullion can be self-
+                      custodial or vaulted.
+                    </li>
+                    <li>
+                      <strong>Liquidity:</strong> Tokens and ETFs offer click-to-trade markets; bullion can be slower and
+                      more fragmented.
+                    </li>
+                    <li>
+                      <strong>Fees:</strong> ETFs charge ongoing management fees; tokens and bullion concentrate costs in
+                      issuance, spreads, and storage.
+                    </li>
+                    <li>
+                      <strong>Usability:</strong> Tokens plug into DeFi and on-chain collateral; bullion is best for
+                      off-grid, long-horizon holders.
+                    </li>
+                  </ul>
+                </section>
+
+                <section id="choosing">
+                  <Heading level={2}>Which format fits which investor?</Heading>
+                  <Paragraph>
+                    There is no single “best” way to hold silver. Instead, the right choice depends on your time horizon,
+                    comfort with digital assets, and need for flexibility.
+                  </Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>
+                      <strong>Crypto-native users</strong> may prefer tokenized silver they can move, trade, or post as
+                      collateral directly on-chain.
+                    </li>
+                    <li>
+                      <strong>Traditional investors</strong> may default to ETFs that sit cleanly inside brokerage and
+                      retirement accounts.
+                    </li>
+                    <li>
+                      <strong>Hard-asset purists</strong> may prioritize physical bullion they can see and touch, even at
+                      the cost of convenience.
+                    </li>
+                  </ul>
+                  <Paragraph>
+                    In practice, many sophisticated allocators blend formats—using tokenized silver for agility, ETFs for
+                    scale, and bullion for long-term reserves.
+                  </Paragraph>
+                </section>
+
+                <section id="risks">
+                  <Heading level={2}>Key risks and due diligence questions</Heading>
+                  <Paragraph>
+                    Regardless of format, silver exposure carries market risk and implementation risk. Asking sharp
+                    questions up front is the best defense.
+                  </Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Who is the legal issuer or fund manager, and in which jurisdiction?</li>
+                    <li>How is custody structured, and who are the vaulting partners?</li>
+                    <li>What audits, attestations, or proof-of-reserves reports are available?</li>
+                    <li>How are fees, spreads, and slippage likely to compound over time?</li>
+                  </ul>
                 </section>
               </>
             ) : (
