@@ -20,6 +20,8 @@ const ArticlePage = () => {
   const isTokenizedVsEtfsArticle = article.slug === "tokenized-silver-vs-etfs-and-bullion";
   const isTokenizedVolumesArticle =
     article.slug === "why-tokenized-silver-volumes-are-exploding-amid-record-silver-prices";
+  const isTokenizedInflationHedgeArticle =
+    article.slug === "tokenized-silver-as-an-inflation-hedge-in-2026";
 
   return (
     <PageShell>
