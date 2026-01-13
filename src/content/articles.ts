@@ -68,6 +68,19 @@ export const articles: ArticleMeta[] = [
       "Compares tokenized silver, silver ETFs, and physical bullion on how they handle custody, liquidity, costs, and real-world usability.",
     authorId: "research-desk",
   },
+  {
+    slug: "why-tokenized-silver-volumes-are-exploding-amid-record-silver-prices",
+    title: "Why Tokenized Silver Volumes Are Exploding Amid Record Silver Prices",
+    subtitle: "How record silver prices and market structure are driving a shift toward on-chain silver.",
+    date: "2025-01-15",
+    readingTimeMinutes: 7,
+    category: "Tokenization",
+    tags: ["Tokenization", "Commodities", "RWA", "Markets"],
+    featured: false,
+    summary:
+      "Explores why tokenized silver volumes have surged alongside record silver prices, highlighting macro drivers, hard on-chain data, and structural market shifts.",
+    authorId: "research-desk",
+  },
 ];
  
 export const allCategories = Array.from(new Set(articles.map((a) => a.category))).sort();
