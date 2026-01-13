@@ -211,10 +211,11 @@ const ArticlePage = () => {
             ) : isTokenizedVsEtfsArticle ? (
               <>
                 <section id="intro">
-                  <Heading level={2}>Three ways to get silver exposure</Heading>
+                  <Heading level={2}>How tokenized silver, ETFs, and bullion differ</Heading>
                   <Paragraph>
-                    Tokenized silver, silver ETFs, and physical bullion all track the same underlying metal, but they
-                    behave very differently in how you hold, trade, and actually use that exposure.
+                    Tokenized silver, silver ETFs, and physical bullion all provide exposure to the same metal, but they
+                    differ sharply in how you own it, how you trade it, and what risks you carry. Thinking in terms of
+                    access, control, and use-cases makes the comparison clearer.
                   </Paragraph>
                 </section>
 
