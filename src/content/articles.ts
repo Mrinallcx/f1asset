@@ -81,6 +81,20 @@ export const articles: ArticleMeta[] = [
       "Explores why tokenized silver volumes have surged alongside record silver prices, highlighting macro drivers, hard on-chain data, and structural market shifts.",
     authorId: "research-desk",
   },
+  {
+    slug: "tokenized-silver-as-an-inflation-hedge-in-2026",
+    title: "Tokenized Silver as an Inflation Hedge in 2026: Data, Risks, and Opportunities",
+    subtitle:
+      "How on-chain silver combines classic inflation-hedge traits with 24/7 access, while introducing new risks and opportunities.",
+    date: "2025-01-20",
+    readingTimeMinutes: 8,
+    category: "Tokenization",
+    tags: ["Tokenization", "Commodities", "RWA", "Macro"],
+    featured: false,
+    summary:
+      "Examines tokenized silver’s role as an inflation hedge in 2026, including performance data, key risks, and use-cases for different investor types.",
+    authorId: "research-desk",
+  },
 ];
  
 export const allCategories = Array.from(new Set(articles.map((a) => a.category))).sort();
