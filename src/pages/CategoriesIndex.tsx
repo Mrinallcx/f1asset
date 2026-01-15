@@ -1,11 +1,11 @@
 import { PageShell } from "@/components/layout/PageShell";
 import { Heading } from "@/components/typography/Heading";
 import { Paragraph } from "@/components/typography/Paragraph";
-import { articles } from "@/content/articles";
+import { articles, allCategories } from "@/content/articles";
 import { Link } from "react-router-dom";
 
 const CategoriesIndex = () => {
-  const categories = Array.from(new Set(articles.map((a) => a.category))).sort();
+  const categories = allCategories;
 
   return (
     <PageShell>
