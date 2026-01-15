@@ -1,0 +1,102 @@
+# llms.txt - Information for AI/LLM Crawlers
+# This file helps AI systems understand the structure and content of this site.
+
+# Site Information
+Site: https://yourdomain.com
+Description: Minimal crypto research journal focused on long-form analysis, tokenization, and real-world assets (RWA).
+Content Type: Blog/Research Journal
+Language: English
+
+# Main Pages
+https://yourdomain.com/
+https://yourdomain.com/blog
+https://yourdomain.com/categories
+https://yourdomain.com/about
+https://yourdomain.com/authors
+
+# Policy Pages
+https://yourdomain.com/privacy-policy
+https://yourdomain.com/terms
+https://yourdomain.com/user-policy
+https://yourdomain.com/cookie-policy
+
+# Categories
+https://yourdomain.com/categories/etf
+https://yourdomain.com/categories/ethereum
+https://yourdomain.com/categories/solana
+https://yourdomain.com/categories/stable%20coin
+https://yourdomain.com/categories/tokenization
+https://yourdomain.com/categories/tokenize%20copper
+https://yourdomain.com/categories/tokenize%20gold
+https://yourdomain.com/categories/tokenize%20oil
+https://yourdomain.com/categories/tokenize%20platinum
+https://yourdomain.com/categories/tokenize%20silver
+https://yourdomain.com/categories/total%20tokenization
+
+# Articles (10 total)
+
+## Tokenization (10 articles)
+
+### Behind the Scenes: Custody, Vaulting, and Audits for Tokenized Silver
+URL: https://yourdomain.com/blog/behind-the-scenes-custody-vaulting-and-audits-for-tokenized-silver
+Date: 2025-01-05
+Summary: A walkthrough of how custody, professional vaulting, insurance, and independent audits work together so every silver token is matched by real vaulted metal.
+
+### How Tokenized Silver Works vs Traditional Silver ETFs and Physical Bullion
+URL: https://yourdomain.com/blog/tokenized-silver-vs-etfs-and-bullion
+Date: 2025-01-10
+Summary: Compares tokenized silver, silver ETFs, and physical bullion on how they handle custody, liquidity, costs, and real-world usability.
+
+### Why Tokenized Silver Volumes Are Exploding Amid Record Silver Prices
+URL: https://yourdomain.com/blog/why-tokenized-silver-volumes-are-exploding-amid-record-silver-prices
+Date: 2025-01-15
+Summary: Explores why tokenized silver volumes have surged alongside record silver prices, highlighting macro drivers, hard on-chain data, and structural market shifts.
+
+### Tokenized Silver as an Inflation Hedge in 2026: Data, Risks, and Opportunities
+URL: https://yourdomain.com/blog/tokenized-silver-as-an-inflation-hedge-in-2026
+Date: 2025-01-20
+Summary: Examines tokenized silver's role as an inflation hedge in 2026, including performance data, key risks, and use-cases for different investor types.
+
+### Tokenized Commodities and Gold-Backed Tokens: Are They Better Than ETFs?
+URL: https://yourdomain.com/blog/tokenized-commodities-and-gold-backed-tokens-are-they-better-than-etfs
+Date: 2025-01-25
+Summary: An in-depth comparison of tokenized commodities and gold-backed tokens versus traditional ETFs, examining liquidity depth, custody models, and DeFi integration capabilities.
+
+### Tokenization Without Public Blockchains: Is It Still Tokenization?
+URL: https://yourdomain.com/blog/tokenization-without-public-blockchains-is-it-still-tokenization
+Date: 2025-01-30
+Summary: A deep dive into why banks and enterprises are adopting tokenization on private ledgers, and whether this represents real tokenization or a fundamentally different approach.
+
+### What Is Tokenized Oil? How Digital Oil Tokens Differ from Traditional Futures and ETFs
+URL: https://yourdomain.com/blog/what-is-tokenized-oil-how-digital-oil-tokens-differ-from-traditional-futures-and-etfs
+Date: 2025-02-05
+Summary: An in-depth exploration of tokenized oil, covering what it is, how it works, and how it differs from traditional oil futures and ETFs in structure, settlement, and ownership.
+
+### Fractional Ownership Explained: Why It Matters for Small Investors in Commodity Markets
+URL: https://yourdomain.com/blog/fractional-ownership-explained-why-it-matters-for-small-investors-in-commodity-markets
+Date: 2025-02-10
+Summary: A comprehensive guide to fractional ownership in commodity markets, explaining how it works, why it matters for small investors, and how it differs from traditional commodity trading and ETFs.
+
+### The Hidden Frictions in Asset Markets: Why Settlement Delays, Opaque Pricing, and Limited Liquidity Still Exist
+URL: https://yourdomain.com/blog/the-hidden-frictions-in-asset-markets-why-settlement-delays-opaque-pricing-and-limited-liquidity-still-exist
+Date: 2025-02-15
+Summary: An analysis of the hidden frictions in asset markets, examining why settlement delays, opaque pricing, and limited liquidity persist, and how these issues disproportionately impact small asset holders.
+
+### Tokenized Assets as Collateral: How Tokens Unlock New Credit Lines for Producers and Traders
+URL: https://yourdomain.com/blog/tokenized-assets-as-collateral-how-tokens-unlock-new-credit-lines-for-producers-and-traders
+Date: 2025-02-20
+Summary: An in-depth look at how tokenized assets function as collateral, enabling producers and traders to unlock new credit lines through faster, more efficient lending mechanisms in both DeFi and traditional finance.
+
+# Authors
+
+https://yourdomain.com/authors/research-desk
+
+# Sitemap
+https://yourdomain.com/sitemap.xml
+
+# Notes for AI Crawlers
+- All articles are research-focused content about tokenization, RWA, and crypto markets
+- Articles are written by the Research Desk team
+- Content is updated regularly with new articles
+- Categories help organize content by topic
+- Use the sitemap.xml for a complete list of all URLs
