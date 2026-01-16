@@ -1,4 +1,5 @@
 import { Menu } from "lucide-react";
+import { Link } from "react-router-dom";
 import { NavLink } from "@/components/NavLink";
 import { Drawer, DrawerContent, DrawerTrigger, DrawerClose } from "@/components/ui/drawer";
 
@@ -11,10 +12,10 @@ const navItems = [
 
 export const SiteHeader = () => (
   <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur">
-    <div className="container flex h-16 items-center justify-between">
-      <NavLink to="/" className="text-sm font-medium tracking-tight text-foreground hover:text-foreground/80">
-        Minimal Crypto Journal
-      </NavLink>
+    <div className="container max-w-5xl flex h-16 items-center justify-between">
+      <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
+        <img src="/f1 logo.svg" alt="F1 Logo" className="h-10 w-auto" />
+      </Link>
 
       {/* Desktop nav */}
       <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">

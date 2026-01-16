@@ -1,6 +1,7 @@
 import { PageShell } from "@/components/layout/PageShell";
 import { Heading } from "@/components/typography/Heading";
 import { Paragraph } from "@/components/typography/Paragraph";
+import { SEO } from "@/components/SEO";
 import { articles, allCategories } from "@/content/articles";
 import { Link, useSearchParams } from "react-router-dom";
 
@@ -20,8 +21,22 @@ const BlogListing = () => {
     }
   };
 
+  const categoryTitle = activeCategory
+    ? `${activeCategory} Articles | Minimal Crypto Journal`
+    : "All Research | Minimal Crypto Journal";
+  const categoryDescription = activeCategory
+    ? `Browse all ${activeCategory} articles and research on tokenization, RWA, and crypto markets.`
+    : "Browse recent notes, frameworks, and long-form pieces on tokenization, RWA, and crypto markets.";
+
   return (
-    <PageShell>
+    <>
+      <SEO
+        title={activeCategory ? `${activeCategory} Articles` : "All Research"}
+        description={categoryDescription}
+        url={activeCategory ? `/blog?category=${encodeURIComponent(activeCategory.toLowerCase())}` : "/blog"}
+        canonicalUrl="/blog"
+      />
+      <PageShell>
       <section className="mb-8 space-y-3">
         <Heading level={1}>All research</Heading>
         <Paragraph>Browse recent notes, frameworks, and long-form pieces.</Paragraph>
@@ -65,6 +80,7 @@ const BlogListing = () => {
         ))}
       </section>
     </PageShell>
+    </>
   );
 };
 

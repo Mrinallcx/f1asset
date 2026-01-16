@@ -5,6 +5,7 @@ import { Paragraph } from "@/components/typography/Paragraph";
 import { Blockquote } from "@/components/typography/Blockquote";
 import { Divider } from "@/components/typography/Divider";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { SEO } from "@/components/SEO";
 import { articles } from "@/content/articles";
 import { authors } from "@/content/authors";
 
@@ -34,9 +35,71 @@ const ArticlePage = () => {
     article.slug === "the-hidden-frictions-in-asset-markets-why-settlement-delays-opaque-pricing-and-limited-liquidity-still-exist";
   const isTokenizedCollateralArticle =
     article.slug === "tokenized-assets-as-collateral-how-tokens-unlock-new-credit-lines-for-producers-and-traders";
+  const isConcentrationRiskArticle =
+    article.slug === "concentration-risk-in-tokenized-assets-when-custody-issuance-and-trust-collapse-into-one-entity";
+  const isTokenizedSilverStreamsArticle =
+    article.slug === "tokenized-silver-streams-how-tokens-enable-fractional-financing-of-mining-projects";
+  const isTokenizationJuniorMinersArticle =
+    article.slug === "tokenization-and-junior-miners-how-capital-access-liquidity-and-risk-profiles-are-being-rewritten";
+  const isMetalInVaultVsGroundArticle =
+    article.slug === "metal-in-vault-vs-metal-in-the-ground-tokens-legal-and-operational-differences-that-matter";
+  const isTokenizedSilverVsFuturesEtfsArticle =
+    article.slug === "tokenized-silver-vs-futures-and-etfs-market-cap-trading-volumes-and-what-the-growth-really-means";
+  const isLiquidityRealityCheckArticle =
+    article.slug === "liquidity-reality-check-slippage-spreads-and-market-depth-in-tokenized-silver-vs-traditional-exchanges";
+  const isOnChainFlowsPriceDiscoveryArticle =
+    article.slug === "do-on-chain-flows-lead-or-lag-price-discovery-tokenized-markets-vs-physical-and-futures-during-stress-events";
+  const isCrossBorderFrictionsArticle =
+    article.slug === "cross-border-frictions-in-tokenized-markets-when-24-7-global-transferability-meets-fragmented-regulation";
+
+  const SITE_URL = import.meta.env.VITE_SITE_URL || "https://yourdomain.com";
+  const articleUrl = `${SITE_URL}/blog/${article.slug}`;
+  const articleImage = article.thumbnailImage || `${SITE_URL}/placeholder.svg`;
+
+  // Structured data for article
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: article.title,
+    description: article.summary,
+    image: articleImage,
+    datePublished: article.date,
+    dateModified: article.date,
+    author: {
+      "@type": "Organization",
+      name: author?.name || "Research Desk",
+      url: author ? `${SITE_URL}/authors/${author.slug}` : undefined,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Minimal Crypto Journal",
+      url: SITE_URL,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": articleUrl,
+    },
+    articleSection: article.category,
+    keywords: article.tags.join(", "),
+  };
 
   return (
-    <PageShell>
+    <>
+      <SEO
+        title={article.title}
+        description={article.summary}
+        image={articleImage}
+        url={`/blog/${article.slug}`}
+        type="article"
+        publishedTime={new Date(article.date).toISOString()}
+        modifiedTime={new Date(article.date).toISOString()}
+        author={author?.name}
+        category={article.category}
+        tags={article.tags}
+        canonicalUrl={`/blog/${article.slug}`}
+        structuredData={structuredData}
+      />
+      <PageShell>
       <div className="mx-auto mb-6 flex max-w-3xl items-center justify-between text-xs text-muted-foreground">
         <button
           type="button"
@@ -2114,6 +2177,1812 @@ const ArticlePage = () => {
                   <Paragraph>It's about <strong>unlocking trapped value and letting assets work harder</strong>.</Paragraph>
                 </section>
               </>
+            ) : isConcentrationRiskArticle ? (
+              <>
+                <section id="why-concentration-risk">
+                  <Heading level={2}>Why Concentration Risk Is the Quiet Threat in Tokenization</Heading>
+                  <Paragraph>
+                    Tokenization is often marketed as a way to <strong>reduce intermediaries</strong> and{" "}
+                    <strong>increase transparency</strong>.
+                  </Paragraph>
+                  <Paragraph>
+                    But in practice, many tokenized asset models introduce a new — and often overlooked — risk:
+                  </Paragraph>
+                  <Paragraph>
+                    <strong>Concentration risk</strong>, where a single entity controls:
+                  </Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Physical custody of the asset</li>
+                    <li>Issuance of the tokens</li>
+                    <li>Ongoing verification and reporting</li>
+                  </ul>
+                  <Paragraph>
+                    When all three sit with one party, the system becomes <strong>fragile</strong>, not resilient.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="what-concentration-risk-looks-like">
+                  <Heading level={2}>What Concentration Risk Looks Like in Tokenized Systems</Heading>
+                  <Paragraph>In a highly concentrated setup, one entity:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Holds the physical asset (e.g., commodities, reserves, inventory)</li>
+                    <li>Issues the digital tokens representing those assets</li>
+                    <li>Controls redemption, reporting, and audits</li>
+                    <li>Often operates the technical infrastructure</li>
+                  </ul>
+                  <Paragraph>
+                    This means token holders rely on <strong>one balance sheet, one operational team, and one point of failure</strong>.
+                  </Paragraph>
+                  <Paragraph>Tokenization does not automatically decentralize risk — it can centralize it.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="why-risk-is-greater">
+                  <Heading level={2}>Why This Risk Is Greater Than It Appears</Heading>
+                  <Paragraph>Traditional markets separate roles for a reason:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Custodians safeguard assets</li>
+                    <li>Issuers create financial instruments</li>
+                    <li>Exchanges provide liquidity</li>
+                    <li>Auditors verify claims</li>
+                  </ul>
+                  <Paragraph>When tokenization collapses these roles into a single entity:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Conflicts of interest increase</li>
+                    <li>Oversight weakens</li>
+                    <li>Failures cascade</li>
+                  </ul>
+                  <Paragraph>
+                    Efficiency improves — but <strong>systemic resilience declines</strong>.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="impact-of-hacks">
+                  <Heading level={2}>The Impact of Hacks</Heading>
+                  <Paragraph>If the controlling entity is hacked:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Token issuance keys may be compromised</li>
+                    <li>Tokens can be minted, frozen, or transferred maliciously</li>
+                    <li>Market confidence can collapse instantly</li>
+                  </ul>
+                  <Paragraph>
+                    Even if the physical asset remains safe, <strong>trust in the token breaks</strong>, rendering it illiquid or worthless.
+                  </Paragraph>
+                  <Paragraph>Blockchain security does not protect against poor operational security.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="impact-of-insolvency">
+                  <Heading level={2}>The Impact of Insolvency</Heading>
+                  <Paragraph>If the issuing and custodial entity becomes insolvent:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Token holders may rank as unsecured creditors</li>
+                    <li>Asset ownership claims can be contested</li>
+                    <li>Redemptions can be frozen indefinitely</li>
+                    <li>Legal proceedings can drag on for years</li>
+                  </ul>
+                  <Paragraph>Token holders often discover too late that:</Paragraph>
+                  <Blockquote>A token is not the same as legal title.</Blockquote>
+                  <Paragraph>Without clear segregation, insolvency wipes out confidence — and value.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="impact-of-fraud">
+                  <Heading level={2}>The Impact of Fraud or Misrepresentation</Heading>
+                  <Paragraph>Concentration risk makes fraud easier to hide.</Paragraph>
+                  <Paragraph>Common scenarios include:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Over-issuing tokens beyond backed assets</li>
+                    <li>Misreporting custody or reserves</li>
+                    <li>Delaying or fabricating audits</li>
+                    <li>Restricting redemptions under vague terms</li>
+                  </ul>
+                  <Paragraph>When verification is internal rather than independent, fraud scales silently.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="small-investors-exposed">
+                  <Heading level={2}>Why Small Investors Are Most Exposed</Heading>
+                  <Paragraph>Institutional players:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Negotiate bespoke protections</li>
+                    <li>Conduct deep due diligence</li>
+                    <li>Demand independent custodians and auditors</li>
+                  </ul>
+                  <Paragraph>Small investors:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Rely on issuer disclosures</li>
+                    <li>Lack direct verification access</li>
+                    <li>Bear losses first when systems fail</li>
+                  </ul>
+                  <Paragraph>
+                    Tokenization lowers entry barriers — but can also lower <strong>defensive barriers</strong>.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="how-to-reduce-risk">
+                  <Heading level={2}>How Concentration Risk Can Be Reduced</Heading>
+                  <Paragraph>Mitigating concentration risk requires structural separation:</Paragraph>
+                  <Heading level={3}>Independent custody</Heading>
+                  <Paragraph>Physical assets held by third-party custodians</Paragraph>
+                  <Heading level={3}>Separate token issuance</Heading>
+                  <Paragraph>Issuance controlled by regulated or audited entities</Paragraph>
+                  <Heading level={3}>Clear legal segregation</Heading>
+                  <Paragraph>Assets held off-balance-sheet from issuer</Paragraph>
+                  <Heading level={3}>External audits and attestations</Heading>
+                  <Paragraph>Regular, verifiable reporting</Paragraph>
+                  <Heading level={3}>Fail-safe redemption rights</Heading>
+                  <Paragraph>Clearly defined and enforceable</Paragraph>
+                  <Paragraph>
+                    Efficiency should never override <strong>role separation</strong>.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="why-this-matters">
+                  <Heading level={2}>Why This Matters for the Future of Tokenization</Heading>
+                  <Paragraph>Tokenization will not be judged by technology alone.</Paragraph>
+                  <Paragraph>It will be judged by:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>What happens when things go wrong</li>
+                    <li>How failures are contained</li>
+                    <li>Who bears the loss</li>
+                  </ul>
+                  <Paragraph>Systems that concentrate risk may scale faster — but they fail harder.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="final-takeaway">
+                  <Heading level={2}>Final Takeaway</Heading>
+                  <Paragraph>Concentration risk is not a theoretical concern.</Paragraph>
+                  <Paragraph>
+                    When one entity controls custody, issuance, and verification, tokenization becomes{" "}
+                    <strong>trust-heavy</strong>, not trust-minimized.
+                  </Paragraph>
+                  <Paragraph>
+                    Hacks, insolvency, or fraud don't just damage one company — they can destroy an entire tokenized market.
+                  </Paragraph>
+                  <Paragraph>
+                    For tokenization to mature, <strong>risk must be distributed, not compressed</strong>.
+                  </Paragraph>
+                </section>
+              </>
+            ) : isTokenizedSilverStreamsArticle ? (
+              <>
+                <section id="from-physical-to-financial">
+                  <Heading level={2}>From Physical Silver to Financial Claims</Heading>
+                  <Paragraph>Not all silver exposure is about owning bars or coins.</Paragraph>
+                  <Paragraph>
+                    In mining finance, much of the value sits <strong>before the metal is produced</strong> — in future
+                    output, royalties, and long-term revenue streams. Traditionally, access to these cash flows has been
+                    limited to:
+                  </Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Large mining companies</li>
+                    <li>Specialized royalty and streaming firms</li>
+                    <li>Institutional investors</li>
+                  </ul>
+                  <Paragraph>
+                    Tokenization introduces a new structure: <strong>representing future silver-linked cash flows as digital tokens</strong>, enabling fractional participation in mining projects.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="what-are-tokenized-silver-output">
+                  <Heading level={2}>What Are Tokenized Silver Output and Royalty Tokens?</Heading>
+                  <Paragraph>In these structures, tokens do <strong>not</strong> represent physical silver today.</Paragraph>
+                  <Paragraph>Instead, they represent <strong>contractual claims</strong> such as:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>A percentage of future silver production</li>
+                    <li>Royalty rights on mined output</li>
+                    <li>Revenue-sharing agreements tied to silver sales</li>
+                    <li>Fixed delivery streams at discounted prices</li>
+                  </ul>
+                  <Paragraph>Each token corresponds to a defined share of these future cash flows.</Paragraph>
+                  <Paragraph>The value of the token is tied to:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Mine performance</li>
+                    <li>Production volumes</li>
+                    <li>Silver prices</li>
+                    <li>Operational and regulatory execution</li>
+                  </ul>
+                </section>
+
+                <Divider />
+
+                <section id="how-fractional-project-finance-works">
+                  <Heading level={2}>How Fractional Project Finance Works</Heading>
+                  <Paragraph>Mining projects are capital-intensive and long-term.</Paragraph>
+                  <Paragraph>
+                    Tokenized structures enable <strong>fractional project finance</strong> through the following flow:
+                  </Paragraph>
+                  <Heading level={3}>Project setup</Heading>
+                  <Paragraph>A mining company or SPV defines the project scope and funding needs.</Paragraph>
+                  <Heading level={3}>Legal structuring</Heading>
+                  <Paragraph>Future production or revenues are contractually assigned to an entity.</Paragraph>
+                  <Heading level={3}>Token issuance</Heading>
+                  <Paragraph>Tokens representing fractional claims are issued on a blockchain or ledger.</Paragraph>
+                  <Heading level={3}>Investor participation</Heading>
+                  <Paragraph>Investors purchase tokens, funding project development.</Paragraph>
+                  <Heading level={3}>Cash flow distribution</Heading>
+                  <Paragraph>As silver is produced and sold, revenue flows to token holders per contract terms.</Paragraph>
+                  <Paragraph>
+                    This replaces large, bespoke financing deals with <strong>modular, divisible participation</strong>.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="differs-from-physical-tokens">
+                  <Heading level={2}>How This Differs from Physical Silver Tokens</Heading>
+                  <div className="my-6 overflow-x-auto">
+                    <table className="w-full border-collapse text-sm">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="border-r p-2 text-left font-semibold">Aspect</th>
+                          <th className="border-r p-2 text-left font-semibold">Physical Silver Tokens</th>
+                          <th className="p-2 text-left font-semibold">Silver Output / Royalty Tokens</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b">
+                          <td className="border-r p-2">Backing</td>
+                          <td className="border-r p-2">Stored metal</td>
+                          <td className="p-2">Future production or revenue</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="border-r p-2">Risk profile</td>
+                          <td className="border-r p-2">Custody and price</td>
+                          <td className="p-2">Operational and execution</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="border-r p-2">Time horizon</td>
+                          <td className="border-r p-2">Immediate</td>
+                          <td className="p-2">Long-term</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="border-r p-2">Cash flows</td>
+                          <td className="border-r p-2">None</td>
+                          <td className="p-2">Ongoing</td>
+                        </tr>
+                        <tr>
+                          <td className="border-r p-2">Investor role</td>
+                          <td className="border-r p-2">Asset holder</td>
+                          <td className="p-2">Project financier</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <Paragraph>
+                    Output and royalty tokens are closer to <strong>infrastructure finance</strong> than commodity ownership.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="why-mining-projects-use">
+                  <Heading level={2}>Why Mining Projects Use These Structures</Heading>
+                  <Paragraph>Mining companies face funding challenges:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>High upfront capital requirements</li>
+                    <li>Long development timelines</li>
+                    <li>Dilution from equity financing</li>
+                    <li>Restrictive debt terms</li>
+                  </ul>
+                  <Paragraph>Tokenized silver streams allow miners to:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Raise capital without equity dilution</li>
+                    <li>Align repayment with production</li>
+                    <li>Access global investor pools</li>
+                    <li>Customize funding terms</li>
+                  </ul>
+                  <Paragraph>This turns future output into <strong>working capital today</strong>.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="why-matters-small-investors">
+                  <Heading level={2}>Why This Matters for Small Investors</Heading>
+                  <Paragraph>Historically, royalty and streaming deals were:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>High minimum investment</li>
+                    <li>Privately negotiated</li>
+                    <li>Opaque in pricing</li>
+                  </ul>
+                  <Paragraph>Tokenization changes this by:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Allowing smaller investment sizes</li>
+                    <li>Increasing transparency of terms</li>
+                    <li>Providing clearer tracking of entitlements</li>
+                    <li>Enabling secondary transfers (where permitted)</li>
+                  </ul>
+                  <Paragraph>Small investors gain access to a financing model previously reserved for institutions.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="risks-investors-must-understand">
+                  <Heading level={2}>Risks Investors Must Understand</Heading>
+                  <Paragraph>These tokens carry <strong>project-level risk</strong>:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Production shortfalls</li>
+                    <li>Cost overruns</li>
+                    <li>Regulatory delays</li>
+                    <li>Commodity price volatility</li>
+                    <li>Counterparty risk</li>
+                  </ul>
+                  <Paragraph>They are not substitutes for physical silver holdings.</Paragraph>
+                  <Paragraph>Understanding the mine, operator, and jurisdiction is critical.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="liquidity-market-reality">
+                  <Heading level={2}>Liquidity and Market Reality</Heading>
+                  <Paragraph>Fractional does not mean liquid.</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Secondary markets may be limited</li>
+                    <li>Exit timing may depend on project milestones</li>
+                    <li>Valuation can fluctuate significantly</li>
+                  </ul>
+                  <Paragraph>
+                    These tokens are best viewed as <strong>long-term, yield-linked instruments</strong>.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="why-model-gaining-attention">
+                  <Heading level={2}>Why This Model Is Gaining Attention</Heading>
+                  <Paragraph>As traditional project finance tightens:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Miners seek flexible funding</li>
+                    <li>Investors seek yield-linked assets</li>
+                    <li>Platforms seek programmable finance models</li>
+                  </ul>
+                  <Paragraph>Tokenized royalty and output structures sit at the intersection of:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Real assets</li>
+                    <li>Alternative finance</li>
+                    <li>Digital infrastructure</li>
+                  </ul>
+                </section>
+
+                <Divider />
+
+                <section id="final-takeaway">
+                  <Heading level={2}>Final Takeaway</Heading>
+                  <Paragraph>
+                    Tokens representing claims on future silver output, royalties, or mining revenue enable a new form of{" "}
+                    <strong>fractional project finance</strong>.
+                  </Paragraph>
+                  <Paragraph>They don't turn silver into crypto.</Paragraph>
+                  <Paragraph>
+                    They turn <strong>future production into investable, divisible financial instruments</strong>.
+                  </Paragraph>
+                  <Paragraph>
+                    When structured properly, they align miners' funding needs with investors' appetite for yield-linked, real-asset exposure.
+                  </Paragraph>
+                </section>
+              </>
+            ) : isTokenizationJuniorMinersArticle ? (
+              <>
+                <section id="capital-problem">
+                  <Heading level={2}>The Capital Problem Facing Junior Miners</Heading>
+                  <Paragraph>Junior mining companies sit at the most fragile point of the mining lifecycle.</Paragraph>
+                  <Paragraph>They typically have:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Proven or probable resources</li>
+                    <li>Limited production or none at all</li>
+                    <li>High exploration and development costs</li>
+                    <li>Restricted access to traditional capital markets</li>
+                  </ul>
+                  <Paragraph>Conventional funding options are painful:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>
+                      <strong>Equity</strong> → heavy dilution at early valuations
+                    </li>
+                    <li>
+                      <strong>Debt</strong> → expensive, restrictive, often unavailable
+                    </li>
+                    <li>
+                      <strong>Royalties/streams</strong> → negotiated privately, with limited flexibility
+                    </li>
+                  </ul>
+                  <Paragraph>
+                    Tokenization introduces a new financing pathway that changes how capital can be accessed — and how risk is distributed.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="what-tokenization-enables">
+                  <Heading level={2}>What Tokenization Enables for Junior Miners</Heading>
+                  <Paragraph>
+                    Tokenization allows junior miners to convert future-oriented assets into{" "}
+                    <strong>digitally representable financial claims</strong>, such as:
+                  </Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Future production rights</li>
+                    <li>Revenue-sharing agreements</li>
+                    <li>Royalties or streaming structures</li>
+                    <li>Convertible project-linked instruments</li>
+                  </ul>
+                  <Paragraph>These claims can be:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Fractionalized</li>
+                    <li>Programmable</li>
+                    <li>Distributed to a broader investor base</li>
+                  </ul>
+                  <Paragraph>
+                    This shifts funding from <strong>relationship-driven deals</strong> to <strong>infrastructure-driven access</strong>.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="capital-access">
+                  <Heading level={2}>Capital Access: From Scarce to Modular</Heading>
+                  <Paragraph>In traditional project finance, junior miners face:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Long fundraising cycles</li>
+                    <li>Limited negotiating leverage</li>
+                    <li>High cost of capital</li>
+                    <li>Dependency on a few counterparties</li>
+                  </ul>
+                  <Paragraph>Tokenization improves access by:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Lowering minimum investment sizes</li>
+                    <li>Enabling global participation (subject to regulation)</li>
+                    <li>Reducing reliance on a single capital provider</li>
+                    <li>Allowing staged or milestone-based fundraising</li>
+                  </ul>
+                  <Paragraph>
+                    Capital becomes <strong>modular</strong> — raised in parts, over time, instead of all at once.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="liquidity">
+                  <Heading level={2}>Liquidity: Illiquid Projects, More Flexible Claims</Heading>
+                  <Paragraph>Mining projects are inherently illiquid.</Paragraph>
+                  <Paragraph>
+                    However, tokenization introduces <strong>liquidity at the claim level</strong>, not the asset level.
+                  </Paragraph>
+                  <Paragraph>This means:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Project ownership remains long-term</li>
+                    <li>Financial claims may be transferable</li>
+                    <li>Early investors can exit without waiting for mine maturity</li>
+                    <li>Price discovery can occur before production begins</li>
+                  </ul>
+                  <Paragraph>
+                    Liquidity is not guaranteed — but it becomes <strong>structurally possible</strong>, which is a major shift.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="compares-traditional">
+                  <Heading level={2}>How This Compares to Traditional Project Finance</Heading>
+                  <div className="my-6 overflow-x-auto">
+                    <table className="w-full border-collapse text-sm">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="border-r p-2 text-left font-semibold">Aspect</th>
+                          <th className="border-r p-2 text-left font-semibold">Tokenized Financing</th>
+                          <th className="p-2 text-left font-semibold">Traditional Project Finance</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b">
+                          <td className="border-r p-2">Investor access</td>
+                          <td className="border-r p-2">Broad, fractional</td>
+                          <td className="p-2">Narrow, institutional</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="border-r p-2">Capital flexibility</td>
+                          <td className="border-r p-2">High</td>
+                          <td className="p-2">Low</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="border-r p-2">Liquidity</td>
+                          <td className="border-r p-2">Potential, limited</td>
+                          <td className="p-2">Near-zero</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="border-r p-2">Documentation</td>
+                          <td className="border-r p-2">Programmable</td>
+                          <td className="p-2">Bespoke, manual</td>
+                        </tr>
+                        <tr>
+                          <td className="border-r p-2">Cost of capital</td>
+                          <td className="border-r p-2">Potentially lower</td>
+                          <td className="p-2">Often high</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <Paragraph>Tokenization does not eliminate risk — it redistributes it.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="risk-profile-miners">
+                  <Heading level={2}>Risk Profile for Junior Miners</Heading>
+                  <Paragraph>For miners, tokenization changes risk in several ways:</Paragraph>
+                  <Heading level={3}>Reduced dilution risk</Heading>
+                  <Paragraph>Capital can be raised without issuing common equity.</Paragraph>
+                  <Heading level={3}>Better alignment</Heading>
+                  <Paragraph>Repayment tied to production or revenue rather than fixed schedules.</Paragraph>
+                  <Heading level={3}>Execution pressure</Heading>
+                  <Paragraph>On-chain transparency increases accountability.</Paragraph>
+                  <Paragraph>However, risks remain:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Regulatory scrutiny</li>
+                    <li>Ongoing disclosure requirements</li>
+                    <li>Market perception of tokenized instruments</li>
+                  </ul>
+                </section>
+
+                <Divider />
+
+                <section id="risk-return-investors">
+                  <Heading level={2}>Risk/Return Profile for Investors</Heading>
+                  <Paragraph>For investors, tokenized junior mining exposure offers:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Higher potential returns than mature producers</li>
+                    <li>Direct linkage to project performance</li>
+                    <li>Access to previously restricted deal structures</li>
+                  </ul>
+                  <Paragraph>But risks are elevated:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Exploration and development uncertainty</li>
+                    <li>Long timelines to cash flow</li>
+                    <li>Commodity price volatility</li>
+                    <li>Liquidity constraints</li>
+                  </ul>
+                  <Paragraph>Compared to traditional project finance, tokenized investments:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Increase access</li>
+                    <li>Improve visibility</li>
+                    <li>Do not reduce underlying geological or operational risk</li>
+                  </ul>
+                </section>
+
+                <Divider />
+
+                <section id="why-changes-investor-base">
+                  <Heading level={2}>Why This Changes the Investor Base</Heading>
+                  <Paragraph>Traditional project finance attracts:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Specialized funds</li>
+                    <li>Strategic partners</li>
+                    <li>Royalty companies</li>
+                  </ul>
+                  <Paragraph>Tokenization expands this to:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Smaller institutional investors</li>
+                    <li>Family offices</li>
+                    <li>Sophisticated retail (where allowed)</li>
+                  </ul>
+                  <Paragraph>
+                    The risk doesn't disappear — it becomes <strong>fractional and optional</strong>.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="strategic-implication">
+                  <Heading level={2}>The Strategic Implication for the Mining Sector</Heading>
+                  <Paragraph>Tokenization does not replace banks or royalty firms.</Paragraph>
+                  <Paragraph>It complements them by:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Filling early-stage funding gaps</li>
+                    <li>Supporting capital formation between milestones</li>
+                    <li>Creating a market for future-linked claims</li>
+                  </ul>
+                  <Paragraph>For junior miners, this can mean:</Paragraph>
+                  <Blockquote>Funding survival without surrendering control.</Blockquote>
+                </section>
+
+                <Divider />
+
+                <section id="final-takeaway">
+                  <Heading level={2}>Final Takeaway</Heading>
+                  <Paragraph>
+                    Tokenization reshapes capital access and liquidity for junior miners by turning future value into{" "}
+                    <strong>investable, divisible financial instruments</strong>.
+                  </Paragraph>
+                  <Paragraph>For investors, it offers a different risk/return profile:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Higher upside</li>
+                    <li>Higher uncertainty</li>
+                    <li>Greater flexibility</li>
+                  </ul>
+                  <Paragraph>This is not a shortcut to safe returns.</Paragraph>
+                  <Paragraph>
+                    It is a <strong>new financing layer</strong> for one of the riskiest — and most capital-starved — parts of the resource economy.
+                  </Paragraph>
+                </section>
+              </>
+            ) : isMetalInVaultVsGroundArticle ? (
+              <>
+                <section id="not-all-tokens-equal">
+                  <Heading level={2}>Not All Metal Tokens Are Created Equal</Heading>
+                  <Paragraph>
+                    "Tokenized metals" is often used as a catch-all term, but it hides a critical distinction.
+                  </Paragraph>
+                  <Paragraph>There are two fundamentally different models:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>
+                      <strong>Metal-in-vault tokens</strong> → backed by existing, stored physical metal
+                    </li>
+                    <li>
+                      <strong>Metal-in-the-ground or revenue-share tokens</strong> → backed by future extraction or cash flows
+                    </li>
+                  </ul>
+                  <Paragraph>
+                    They may look similar on a dashboard, but legally and operationally, they are{" "}
+                    <strong>entirely different instruments</strong>.
+                  </Paragraph>
+                  <Paragraph>Understanding this distinction is essential for investors, issuers, and regulators.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="what-are-metal-in-vault">
+                  <Heading level={2}>What Are Metal-in-Vault Tokens?</Heading>
+                  <Paragraph>
+                    Metal-in-vault tokens represent <strong>existing physical metal</strong> that has already been mined,
+                    refined, and stored.
+                  </Paragraph>
+                  <Paragraph>Key characteristics:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Backed by specific quantities of metal (e.g., silver bars)</li>
+                    <li>Stored in third-party vaults</li>
+                    <li>Often fully allocated and audited</li>
+                    <li>Sometimes redeemable for physical delivery</li>
+                  </ul>
+                  <Paragraph>Legally, these tokens typically represent:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>
+                      <strong>Direct ownership</strong>
+                    </li>
+                    <li>
+                      <strong>Bailment rights</strong>
+                    </li>
+                    <li>Or <strong>beneficial interest</strong> in stored metal</li>
+                  </ul>
+                  <Paragraph>The metal already exists. The token tracks <em>who owns it</em>.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="operational-model-vault">
+                  <Heading level={2}>Operational Model of Metal-in-Vault Tokens</Heading>
+                  <Paragraph>Operationally, this model is relatively straightforward:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Metal is sourced and vaulted</li>
+                    <li>Custodians issue storage receipts</li>
+                    <li>Tokens mirror custody records</li>
+                    <li>Transfers update ownership claims</li>
+                    <li>Audits verify metal-to-token parity</li>
+                  </ul>
+                  <Paragraph>The primary risks are:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Custodian failure</li>
+                    <li>Issuer insolvency</li>
+                    <li>Audit integrity</li>
+                    <li>Redemption mechanics</li>
+                  </ul>
+                  <Paragraph>This is an <strong>asset custody problem</strong>, not a production problem.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="what-are-metal-in-ground">
+                  <Heading level={2}>What Are Metal-in-the-Ground or Revenue-Share Tokens?</Heading>
+                  <Paragraph>
+                    Metal-in-the-ground tokens represent <strong>future value</strong>, not existing assets.
+                  </Paragraph>
+                  <Paragraph>They may correspond to:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Future mined output</li>
+                    <li>Royalty interests</li>
+                    <li>Revenue shares from metal sales</li>
+                    <li>Streaming agreements at fixed prices</li>
+                  </ul>
+                  <Paragraph>Here, the metal:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Is not yet extracted</li>
+                    <li>May never be extracted</li>
+                    <li>Is subject to operational and regulatory uncertainty</li>
+                  </ul>
+                  <Paragraph>These tokens represent <strong>contractual claims</strong>, not physical ownership.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="legal-structure">
+                  <Heading level={2}>Legal Structure: Ownership vs Contractual Rights</Heading>
+                  <Paragraph>This is the most important legal difference.</Paragraph>
+                  <div className="my-6 overflow-x-auto">
+                    <table className="w-full border-collapse text-sm">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="border-r p-2 text-left font-semibold">Aspect</th>
+                          <th className="border-r p-2 text-left font-semibold">Metal-in-Vault Tokens</th>
+                          <th className="p-2 text-left font-semibold">Metal-in-the-Ground / Revenue Tokens</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b">
+                          <td className="border-r p-2">Legal nature</td>
+                          <td className="border-r p-2">Property or custody right</td>
+                          <td className="p-2">Contractual or financial claim</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="border-r p-2">Asset existence</td>
+                          <td className="border-r p-2">Present</td>
+                          <td className="p-2">Future / contingent</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="border-r p-2">Claim priority</td>
+                          <td className="border-r p-2">Often senior</td>
+                          <td className="p-2">Often subordinated</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="border-r p-2">Bankruptcy treatment</td>
+                          <td className="border-r p-2">May be segregated</td>
+                          <td className="p-2">Often part of estate</td>
+                        </tr>
+                        <tr>
+                          <td className="border-r p-2">Enforcement</td>
+                          <td className="border-r p-2">Asset recovery</td>
+                          <td className="p-2">Legal action</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <Paragraph>Metal-in-vault tokens can survive issuer failure.</Paragraph>
+                  <Paragraph>Revenue-share tokens often cannot.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="risk-profiles">
+                  <Heading level={2}>Risk Profiles: Storage Risk vs Execution Risk</Heading>
+                  <Paragraph>The two models expose investors to very different risks.</Paragraph>
+                  <Heading level={3}>Metal-in-vault risks:</Heading>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Custody concentration</li>
+                    <li>Vault jurisdiction</li>
+                    <li>Insurance coverage</li>
+                    <li>Redemption constraints</li>
+                  </ul>
+                  <Heading level={3}>Metal-in-the-ground risks:</Heading>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Exploration and production risk</li>
+                    <li>Cost overruns</li>
+                    <li>Permitting delays</li>
+                    <li>Commodity price volatility</li>
+                    <li>Counterparty default</li>
+                  </ul>
+                  <Paragraph>One protects existing value.</Paragraph>
+                  <Paragraph>The other bets on value creation.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="liquidity-valuation">
+                  <Heading level={2}>Liquidity and Valuation Differences</Heading>
+                  <Paragraph>Metal-in-vault tokens:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Closely track spot metal prices</li>
+                    <li>Easier to value</li>
+                    <li>Often more liquid</li>
+                    <li>Lower volatility</li>
+                  </ul>
+                  <Paragraph>Metal-in-the-ground tokens:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Require project-level valuation</li>
+                    <li>Depend on timelines and assumptions</li>
+                    <li>Have limited secondary liquidity</li>
+                    <li>Exhibit higher volatility</li>
+                  </ul>
+                  <Paragraph>They behave more like <strong>project finance instruments</strong> than commodities.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="regulatory-treatment">
+                  <Heading level={2}>Regulatory Treatment and Classification</Heading>
+                  <Paragraph>Regulators typically view these differently:</Paragraph>
+                  <Paragraph>Metal-in-vault tokens may be treated as:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Commodities</li>
+                    <li>Digital warehouse receipts</li>
+                    <li>Asset-backed instruments</li>
+                  </ul>
+                  <Paragraph>Metal-in-the-ground tokens are more likely treated as:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Securities</li>
+                    <li>Investment contracts</li>
+                    <li>Alternative financing instruments</li>
+                  </ul>
+                  <Paragraph>This affects:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Who can invest</li>
+                    <li>Disclosure requirements</li>
+                    <li>Transfer restrictions</li>
+                    <li>Platform licensing</li>
+                  </ul>
+                </section>
+
+                <Divider />
+
+                <section id="why-confusing-dangerous">
+                  <Heading level={2}>Why Confusing the Two Is Dangerous</Heading>
+                  <Paragraph>When these models are marketed under the same "tokenized metal" label:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Investors misprice risk</li>
+                    <li>Issuers face regulatory exposure</li>
+                    <li>Trust breaks during downturns</li>
+                  </ul>
+                  <Paragraph>
+                    Owning stored metal and funding a mining project are <strong>not interchangeable</strong> — even if both use tokens.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="final-takeaway">
+                  <Heading level={2}>Final Takeaway</Heading>
+                  <Paragraph>
+                    Metal-in-vault tokens and metal-in-the-ground or revenue-share tokens serve very different purposes.
+                  </Paragraph>
+                  <Paragraph>One digitizes <strong>ownership of existing assets</strong>.</Paragraph>
+                  <Paragraph>The other digitizes <strong>claims on future outcomes</strong>.</Paragraph>
+                  <Paragraph>
+                    Tokenization does not erase these differences — it makes them more important to understand.
+                  </Paragraph>
+                  <Paragraph>In tokenized metals, the question is not just <em>what is the asset</em> —</Paragraph>
+                  <Paragraph>
+                    but <em>when does it exist, and what exactly do you legally own</em>.
+                  </Paragraph>
+                </section>
+              </>
+            ) : isTokenizedSilverVsFuturesEtfsArticle ? (
+              <>
+                <section id="three-different-markets">
+                  <Heading level={2}>Three Very Different Silver Markets</Heading>
+                  <Paragraph>Silver exposure today exists across three distinct market layers:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>
+                      <strong>Tokenized silver markets</strong> → digital tokens backed by silver or silver-linked claims
+                    </li>
+                    <li>
+                      <strong>Silver futures markets</strong> → derivatives traded on commodity exchanges
+                    </li>
+                    <li>
+                      <strong>Silver ETFs</strong> → fund-based instruments tracking price movements
+                    </li>
+                  </ul>
+                  <Paragraph>
+                    They all reference silver — but they operate on <strong>different scales, mechanics, and purposes</strong>.
+                  </Paragraph>
+                  <Paragraph>
+                    Understanding how their market caps and volumes compare is key to interpreting recent growth headlines.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="current-scale-tokenized">
+                  <Heading level={2}>The Current Scale of Tokenized Silver</Heading>
+                  <Paragraph>
+                    Tokenized silver is still a <strong>small market in absolute terms</strong>, but it is growing rapidly.
+                  </Paragraph>
+                  <Paragraph>Recent data across major tokenized silver products shows:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Combined market capitalization exceeding <strong>$300 million</strong></li>
+                    <li>Trading volume growth accelerating sharply</li>
+                    <li>Periodic volume spikes exceeding <strong>1,000%+</strong> during high-demand periods</li>
+                  </ul>
+                  <Paragraph>
+                    These numbers are tiny compared to traditional markets — but large relative to where tokenized silver started.
+                  </Paragraph>
+                  <Paragraph>The significance lies not in size, but in <strong>growth velocity</strong>.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="what-drives-volume-spikes">
+                  <Heading level={2}>What Drives Tokenized Silver Volume Spikes?</Heading>
+                  <Paragraph>Large percentage spikes often occur because:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>The base volume is still small</li>
+                    <li>New platforms or listings go live</li>
+                    <li>Market stress increases demand for alternative silver exposure</li>
+                    <li>Arbitrage opportunities briefly appear</li>
+                    <li>On-chain liquidity incentives are introduced</li>
+                  </ul>
+                  <Paragraph>A 1,200% increase may sound dramatic, but it usually reflects:</Paragraph>
+                  <Blockquote>
+                    A market moving from low activity to moderate activity — not mass adoption overnight.
+                  </Blockquote>
+                  <Paragraph>Growth is real, but context matters.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="compares-futures">
+                  <Heading level={2}>How This Compares to Silver Futures Markets</Heading>
+                  <Paragraph>Silver futures markets operate at a completely different scale.</Paragraph>
+                  <Paragraph>Typical characteristics:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Daily trading volumes in the <strong>tens of billions of dollars (notional)</strong></li>
+                    <li>Extremely high liquidity</li>
+                    <li>Institutional and professional trader dominance</li>
+                    <li>Heavy use for hedging and speculation</li>
+                  </ul>
+                  <Paragraph>Compared to tokenized silver:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Futures volumes are <strong>orders of magnitude larger</strong></li>
+                    <li>Liquidity is deep and continuous</li>
+                    <li>Price discovery happens primarily here</li>
+                  </ul>
+                  <Paragraph>
+                    Tokenized silver does not compete with futures on volume — and does not need to.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="compares-etfs">
+                  <Heading level={2}>How This Compares to Silver ETFs</Heading>
+                  <Paragraph>
+                    Silver ETFs sit between futures and tokenized silver in purpose, but not in scale.
+                  </Paragraph>
+                  <Paragraph>Key traits:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Assets under management often in the <strong>tens of billions</strong></li>
+                    <li>Daily trading volumes in the <strong>hundreds of millions</strong></li>
+                    <li>Strong retail and institutional participation</li>
+                    <li>Exposure via fund shares, not metal ownership</li>
+                  </ul>
+                  <Paragraph>Compared to ETFs:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Tokenized silver has a much smaller market cap</li>
+                    <li>Trading activity is more fragmented</li>
+                    <li>Liquidity varies widely by platform</li>
+                    <li>Volatility can be higher in short bursts</li>
+                  </ul>
+                  <Paragraph>ETFs dominate <strong>passive exposure</strong>.</Paragraph>
+                  <Paragraph>
+                    Tokenized silver experiments with <strong>ownership models and settlement mechanics</strong>.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="why-growth-matters">
+                  <Heading level={2}>Why Tokenized Silver's Growth Still Matters</Heading>
+                  <Paragraph>
+                    Despite its small size, tokenized silver's growth is meaningful for three reasons:
+                  </Paragraph>
+                  <Heading level={3}>New infrastructure adoption</Heading>
+                  <Paragraph>Growth reflects demand for programmable, on-chain asset representations.</Paragraph>
+                  <Heading level={3}>Different participant behavior</Heading>
+                  <Paragraph>Users engage differently with tokens than with ETFs or futures.</Paragraph>
+                  <Heading level={3}>Early-stage network effects</Heading>
+                  <Paragraph>Liquidity, custody, and settlement layers are still forming.</Paragraph>
+                  <Paragraph>Early growth in infrastructure markets often looks noisy before it looks stable.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="market-cap-vs-liquidity">
+                  <Heading level={2}>Market Cap vs Liquidity: A Critical Distinction</Heading>
+                  <Paragraph>A common mistake is equating market cap with liquidity.</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>
+                      A $300M tokenized silver market cap does <strong>not</strong> mean $300M can be traded efficiently
+                    </li>
+                    <li>Liquidity may be shallow</li>
+                    <li>Spreads may widen quickly under stress</li>
+                    <li>Volume spikes can be short-lived</li>
+                  </ul>
+                  <Paragraph>In contrast:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Futures and ETFs have <strong>structural liquidity</strong></li>
+                    <li>Market makers, clearing systems, and deep order books stabilize trading</li>
+                  </ul>
+                  <Paragraph>Tokenized silver is still building this foundation.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="different-markets-different-jobs">
+                  <Heading level={2}>Different Markets, Different Jobs</Heading>
+                  <div className="my-6 overflow-x-auto">
+                    <table className="w-full border-collapse text-sm">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="border-r p-2 text-left font-semibold">Market</th>
+                          <th className="p-2 text-left font-semibold">Primary Role</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b">
+                          <td className="border-r p-2">Silver futures</td>
+                          <td className="p-2">Price discovery, hedging</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="border-r p-2">Silver ETFs</td>
+                          <td className="p-2">Passive price exposure</td>
+                        </tr>
+                        <tr>
+                          <td className="border-r p-2">Tokenized silver</td>
+                          <td className="p-2">Ownership models, settlement innovation</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <Paragraph>Tokenized silver is not replacing existing markets.</Paragraph>
+                  <Paragraph>
+                    It is exploring <strong>new ways to hold, move, and use silver-linked assets</strong>.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="what-growth-signals">
+                  <Heading level={2}>What the Growth Signals — and What It Doesn't</Heading>
+                  <Paragraph>What it signals:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Rising interest in on-chain commodities</li>
+                    <li>Experimentation with alternative silver exposure</li>
+                    <li>Growing infrastructure maturity</li>
+                  </ul>
+                  <Paragraph>What it does <em>not</em> signal:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Imminent displacement of futures or ETFs</li>
+                    <li>Comparable liquidity or scale</li>
+                    <li>Risk-free adoption</li>
+                  </ul>
+                  <Paragraph>Growth is directional, not definitive.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="final-takeaway">
+                  <Heading level={2}>Final Takeaway</Heading>
+                  <Paragraph>
+                    Tokenized silver's market cap crossing <strong>$300M</strong> and its sharp volume growth highlight{" "}
+                    <strong>momentum, not dominance</strong>.
+                  </Paragraph>
+                  <Paragraph>Compared to futures and ETFs, tokenized silver remains:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Smaller</li>
+                    <li>Less liquid</li>
+                    <li>More volatile</li>
+                  </ul>
+                  <Paragraph>But its rapid growth reflects something important:</Paragraph>
+                  <Blockquote>
+                    Investors and platforms are testing new financial plumbing, not just new products.
+                  </Blockquote>
+                  <Paragraph>The real story is not how big tokenized silver is today —</Paragraph>
+                  <Paragraph>
+                    but <strong>what kind of market it might become as infrastructure matures</strong>.
+                  </Paragraph>
+                </section>
+              </>
+            ) : isLiquidityRealityCheckArticle ? (
+              <>
+                <section id="liquidity-more-than-trading">
+                  <Heading level={2}>Liquidity Is More Than "Can I Trade?"</Heading>
+                  <Paragraph>When people talk about liquidity, they often reduce it to a yes-or-no question:</Paragraph>
+                  <Blockquote>"Is there volume?"</Blockquote>
+                  <Paragraph>
+                    But real liquidity is about <strong>how efficiently you can trade without moving the price</strong>.
+                  </Paragraph>
+                  <Paragraph>This is where metrics like:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>
+                      <strong>Slippage</strong>
+                    </li>
+                    <li>
+                      <strong>Bid–ask spreads</strong>
+                    </li>
+                    <li>
+                      <strong>Order book depth</strong>
+                    </li>
+                  </ul>
+                  <Paragraph>
+                    become more important than headline volume — especially in tokenized silver markets.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="three-key-metrics">
+                  <Heading level={2}>Understanding the Three Key Liquidity Metrics</Heading>
+                  <Paragraph>Before comparing markets, it's important to clarify terms:</Paragraph>
+                  <Heading level={3}>Slippage</Heading>
+                  <Paragraph>The difference between expected execution price and actual execution price.</Paragraph>
+                  <Heading level={3}>Bid–ask spread</Heading>
+                  <Paragraph>The gap between the best buy price and best sell price.</Paragraph>
+                  <Heading level={3}>Market depth</Heading>
+                  <Paragraph>
+                    How much volume can be traded near the current price without significant price impact.
+                  </Paragraph>
+                  <Paragraph>High volume with poor depth still results in bad execution.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="tokenized-silver-dexs">
+                  <Heading level={2}>Tokenized Silver on DEXs: Liquidity by Pool, Not Market</Heading>
+                  <Paragraph>
+                    On decentralized exchanges (DEXs), silver tokens usually trade via <strong>liquidity pools</strong>, not
+                    order books.
+                  </Paragraph>
+                  <Paragraph>Characteristics:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Liquidity is fragmented across pools</li>
+                    <li>Prices move quickly with trade size</li>
+                    <li>Slippage increases non-linearly</li>
+                    <li>Liquidity depends on incentives, not obligation</li>
+                  </ul>
+                  <Paragraph>For small trades:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Execution can be efficient</li>
+                    <li>Spreads may appear tight</li>
+                  </ul>
+                  <Paragraph>For larger trades:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Slippage increases sharply</li>
+                    <li>Price impact becomes visible</li>
+                    <li>Exit costs rise quickly</li>
+                  </ul>
+                  <Paragraph>DEX liquidity is <strong>reactive</strong>, not guaranteed.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="tokenized-silver-cexs">
+                  <Heading level={2}>Tokenized Silver on CEXs: Better Structure, Limited Depth</Heading>
+                  <Paragraph>Centralized exchanges (CEXs) offer:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Order books</li>
+                    <li>Market makers</li>
+                    <li>Tighter visible spreads</li>
+                  </ul>
+                  <Paragraph>However, for most silver tokens:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Order books are thin</li>
+                    <li>Depth falls off quickly beyond top levels</li>
+                    <li>Market makers operate with limited inventory</li>
+                    <li>Liquidity often depends on a single venue</li>
+                  </ul>
+                  <Paragraph>This results in:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Acceptable execution for retail-sized trades</li>
+                    <li>Significant slippage for institutional-sized orders</li>
+                    <li>Vulnerability during volatility spikes</li>
+                  </ul>
+                  <Paragraph>CEXs improve mechanics — but not scale.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="traditional-silver-exchanges">
+                  <Heading level={2}>How Traditional Silver Exchanges Differ</Heading>
+                  <Paragraph>
+                    Traditional silver markets (spot and futures) are built for <strong>depth first</strong>.
+                  </Paragraph>
+                  <Paragraph>Key characteristics:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Deep order books across many price levels</li>
+                    <li>Multiple professional market makers</li>
+                    <li>Continuous two-sided quotes</li>
+                    <li>Central clearing and netting</li>
+                  </ul>
+                  <Paragraph>As a result:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Large orders can be executed with minimal slippage</li>
+                    <li>Spreads remain tight even during stress</li>
+                    <li>Liquidity is structural, not optional</li>
+                  </ul>
+                  <Paragraph>This is why price discovery happens there.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="side-by-side-comparison">
+                  <Heading level={2}>Side-by-Side Liquidity Comparison</Heading>
+                  <div className="my-6 overflow-x-auto">
+                    <table className="w-full border-collapse text-sm">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="border-r p-2 text-left font-semibold">Metric</th>
+                          <th className="border-r p-2 text-left font-semibold">Tokenized Silver (DEX)</th>
+                          <th className="border-r p-2 text-left font-semibold">Tokenized Silver (CEX)</th>
+                          <th className="p-2 text-left font-semibold">Traditional Exchanges</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b">
+                          <td className="border-r p-2">Spread</td>
+                          <td className="border-r p-2">Variable</td>
+                          <td className="border-r p-2">Moderate</td>
+                          <td className="p-2">Very tight</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="border-r p-2">Slippage (small trades)</td>
+                          <td className="border-r p-2">Low</td>
+                          <td className="border-r p-2">Low</td>
+                          <td className="p-2">Minimal</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="border-r p-2">Slippage (large trades)</td>
+                          <td className="border-r p-2">High</td>
+                          <td className="border-r p-2">High</td>
+                          <td className="p-2">Low</td>
+                        </tr>
+                        <tr className="border-b">
+                          <td className="border-r p-2">Market depth</td>
+                          <td className="border-r p-2">Shallow</td>
+                          <td className="border-r p-2">Limited</td>
+                          <td className="p-2">Deep</td>
+                        </tr>
+                        <tr>
+                          <td className="border-r p-2">Stress performance</td>
+                          <td className="border-r p-2">Fragile</td>
+                          <td className="border-r p-2">Uneven</td>
+                          <td className="p-2">Resilient</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <Paragraph>Tokenized silver liquidity works well — <strong>until size increases</strong>.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="why-liquidity-breaks">
+                  <Heading level={2}>Why Liquidity Breaks Faster in Tokenized Markets</Heading>
+                  <Paragraph>Several structural reasons explain the gap:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Smaller participant base</li>
+                    <li>Fewer professional market makers</li>
+                    <li>No obligation to quote</li>
+                    <li>Fragmented venues</li>
+                    <li>Inventory risk tied to custody and redemption</li>
+                  </ul>
+                  <Paragraph>
+                    Liquidity providers demand higher compensation — which shows up as wider spreads and slippage.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="why-matters-investors">
+                  <Heading level={2}>Why This Matters for Investors and Traders</Heading>
+                  <Paragraph>For holders:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Entry is usually easy</li>
+                    <li>Exit timing matters</li>
+                    <li>Liquidity assumptions must be conservative</li>
+                  </ul>
+                  <Paragraph>For traders:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Position sizing is critical</li>
+                    <li>Market impact dominates strategy</li>
+                    <li>Arbitrage opportunities are limited by depth</li>
+                  </ul>
+                  <Paragraph>
+                    Tokenized silver behaves more like a <strong>specialty asset</strong> than a mass-market commodity.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="direction-of-travel">
+                  <Heading level={2}>The Direction of Travel (Not the End State)</Heading>
+                  <Paragraph>Liquidity is not static.</Paragraph>
+                  <Paragraph>As tokenized silver markets mature:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>More market makers may enter</li>
+                    <li>Depth can improve</li>
+                    <li>Cross-venue liquidity may emerge</li>
+                    <li>Hybrid on/off-chain models may reduce friction</li>
+                  </ul>
+                  <Paragraph>
+                    But this is a <strong>long infrastructure cycle</strong>, not a short-term fix.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="final-takeaway">
+                  <Heading level={2}>Final Takeaway</Heading>
+                  <Paragraph>
+                    Slippage, spreads, and depth reveal the real state of tokenized silver markets.
+                  </Paragraph>
+                  <Paragraph>Compared to traditional exchanges:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Execution costs are higher</li>
+                    <li>Depth is thinner</li>
+                    <li>Liquidity is less resilient</li>
+                  </ul>
+                  <Paragraph>Tokenized silver is not broken — it is <strong>early</strong>.</Paragraph>
+                  <Paragraph>
+                    The key is understanding what these markets are good for today — and where their limits still are.
+                  </Paragraph>
+                </section>
+              </>
+            ) : isOnChainFlowsPriceDiscoveryArticle ? (
+              <>
+                <section id="price-discovery-under-stress">
+                  <Heading level={2}>Price Discovery Under Stress Is a Different Game</Heading>
+                  <Paragraph>In calm markets, prices across venues tend to move together.</Paragraph>
+                  <Paragraph>
+                    During <strong>stress events</strong>, they don't.
+                  </Paragraph>
+                  <Paragraph>
+                    Liquidity fragments, participants retreat to familiar venues, and the question becomes critical:
+                  </Paragraph>
+                  <Blockquote>
+                    Do on-chain flows <em>lead</em> price discovery — or do they merely <em>react</em> to moves in
+                    physical and futures markets?
+                  </Blockquote>
+                  <Paragraph>
+                    Understanding this distinction matters for traders, risk managers, and anyone interpreting
+                    tokenized market data.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="leading-vs-lagging">
+                  <Heading level={2}>What "Leading" vs "Lagging" Price Discovery Means</Heading>
+                  <Heading level={3}>Leading price discovery</Heading>
+                  <Paragraph>Prices move first in one venue and are then reflected elsewhere.</Paragraph>
+                  <Heading level={3}>Lagging price discovery</Heading>
+                  <Paragraph>Prices adjust only after moves occur in a dominant market.</Paragraph>
+                  <Paragraph>In commodities, leadership is usually earned through:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Depth</li>
+                    <li>Liquidity</li>
+                    <li>Participation by informed players</li>
+                    <li>Ability to absorb large trades under stress</li>
+                  </ul>
+                </section>
+
+                <Divider />
+
+                <section id="where-price-discovery-lives">
+                  <Heading level={2}>Where Price Discovery Traditionally Lives</Heading>
+                  <Paragraph>In silver (and most commodities), price discovery has historically occurred in:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>
+                      <strong>Futures markets</strong> (primary)
+                    </li>
+                    <li>
+                      <strong>Spot physical markets</strong> (secondary)
+                    </li>
+                  </ul>
+                  <Paragraph>Why?</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Deep order books</li>
+                    <li>Institutional participation</li>
+                    <li>Hedging and speculative capital</li>
+                    <li>Continuous two-sided liquidity</li>
+                  </ul>
+                  <Paragraph>
+                    These markets process <strong>information shocks</strong> — macro news, supply disruptions, risk-off
+                    events — faster than any alternative venue.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="on-chain-normal-conditions">
+                  <Heading level={2}>How On-Chain Silver Markets Behave in Normal Conditions</Heading>
+                  <Paragraph>In stable conditions:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>On-chain prices often track futures closely</li>
+                    <li>Arbitrage keeps deviations small</li>
+                    <li>Flows appear synchronized</li>
+                  </ul>
+                  <Paragraph>
+                    This creates the illusion that on-chain markets participate equally in price discovery.
+                  </Paragraph>
+                  <Paragraph>But normal conditions hide structural asymmetries.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="stress-events">
+                  <Heading level={2}>What Happens During Stress Events</Heading>
+                  <Paragraph>
+                    During stress events (macro shocks, sharp risk-off moves, liquidity crunches), a pattern usually
+                    emerges:
+                  </Paragraph>
+                  <Paragraph>
+                    <strong>1. Futures markets move first</strong>
+                  </Paragraph>
+                  <Paragraph className="pl-5">Large players reposition rapidly.</Paragraph>
+                  <Paragraph>
+                    <strong>2. Physical market spreads widen</strong>
+                  </Paragraph>
+                  <Paragraph className="pl-5">Dealers protect inventory and balance sheets.</Paragraph>
+                  <Paragraph>
+                    <strong>3. On-chain markets react</strong>
+                  </Paragraph>
+                  <Paragraph className="pl-5">Prices adjust after off-chain moves become visible.</Paragraph>
+                  <Paragraph>In most cases, on-chain flows <strong>lag</strong> rather than lead.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="why-on-chain-lags">
+                  <Heading level={2}>Why On-Chain Markets Tend to Lag</Heading>
+                  <Paragraph>Several structural reasons explain this behavior:</Paragraph>
+                  <Paragraph>
+                    <strong>Shallower liquidity</strong>
+                  </Paragraph>
+                  <Paragraph className="pl-5">On-chain markets cannot absorb large information-driven trades.</Paragraph>
+                  <Paragraph>
+                    <strong>Participant mix</strong>
+                  </Paragraph>
+                  <Paragraph className="pl-5">Fewer hedgers, more holders and small traders.</Paragraph>
+                  <Paragraph>
+                    <strong>Risk aversion by liquidity providers</strong>
+                  </Paragraph>
+                  <Paragraph className="pl-5">LPs pull liquidity during volatility, slowing adjustment.</Paragraph>
+                  <Paragraph>
+                    <strong>Dependence on oracles and reference prices</strong>
+                  </Paragraph>
+                  <Paragraph className="pl-5">Many on-chain prices update based on off-chain data feeds.</Paragraph>
+                  <Paragraph>Price discovery follows depth — and depth remains off-chain.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="when-on-chain-leads">
+                  <Heading level={2}>When On-Chain Flows Can Appear to Lead</Heading>
+                  <Paragraph>There are edge cases where on-chain flows move first:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Temporary dislocations due to liquidity withdrawal</li>
+                    <li>Delayed oracle updates</li>
+                    <li>Platform-specific demand spikes</li>
+                    <li>Redemption or custody concerns</li>
+                  </ul>
+                  <Paragraph>In these moments:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>On-chain prices may diverge</li>
+                    <li>Spreads can widen sharply</li>
+                    <li>Flows spike dramatically</li>
+                  </ul>
+                  <Paragraph>But these moves reflect <strong>market friction</strong>, not superior information.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="interpreting-volume-spikes">
+                  <Heading level={2}>Interpreting On-Chain Volume Spikes During Stress</Heading>
+                  <Paragraph>Large on-chain volume during stress often signals:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Panic rebalancing</li>
+                    <li>Retail-driven demand</li>
+                    <li>Arbitrage attempts</li>
+                    <li>Liquidity exits</li>
+                  </ul>
+                  <Paragraph>It does <em>not</em> necessarily signal:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Better price discovery</li>
+                    <li>New fundamental information</li>
+                  </ul>
+                  <Paragraph>Volume spikes can lag price moves while amplifying volatility.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="why-matters-risk-strategy">
+                  <Heading level={2}>Why This Matters for Risk and Strategy</Heading>
+                  <Paragraph>Misreading leadership can lead to:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Late entries</li>
+                    <li>False signals</li>
+                    <li>Overconfidence in on-chain data</li>
+                  </ul>
+                  <Paragraph>For traders:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Futures still set the reference price</li>
+                    <li>On-chain markets express reaction and positioning</li>
+                  </ul>
+                  <Paragraph>For builders:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Improving depth and resilience matters more than speed</li>
+                    <li>True price discovery requires institutional participation</li>
+                  </ul>
+                </section>
+
+                <Divider />
+
+                <section id="long-term-view">
+                  <Heading level={2}>The Long-Term View</Heading>
+                  <Paragraph>This dynamic is not fixed forever.</Paragraph>
+                  <Paragraph>On-chain markets could move closer to price discovery leadership if:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Depth increases significantly</li>
+                    <li>Institutional hedgers participate</li>
+                    <li>On-chain settlement integrates directly with physical supply chains</li>
+                  </ul>
+                  <Paragraph>But that is a structural evolution — not a current reality.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="final-takeaway">
+                  <Heading level={2}>Final Takeaway</Heading>
+                  <Paragraph>
+                    During stress events, on-chain flows in tokenized silver markets <strong>almost always lag</strong>{" "}
+                    price discovery in physical and futures markets.
+                  </Paragraph>
+                  <Paragraph>They reflect:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Reaction</li>
+                    <li>Repositioning</li>
+                    <li>Liquidity stress</li>
+                  </ul>
+                  <Paragraph>Not primary information.</Paragraph>
+                  <Paragraph>
+                    On-chain data is valuable — but only when interpreted as <strong>a mirror of market response</strong>
+                    , not the source of market truth.
+                  </Paragraph>
+                </section>
+              </>
+            ) : isCrossBorderFrictionsArticle ? (
+              <>
+                <section id="tokenization-promises-borderless">
+                  <Heading level={2}>Tokenization Promises Borderless Finance — Regulation Does Not</Heading>
+                  <Paragraph>One of the strongest narratives in tokenization is <strong>global, 24/7 transferability</strong>.</Paragraph>
+                  <Paragraph>Tokens can move:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Instantly</li>
+                    <li>Across borders</li>
+                    <li>Without market hours</li>
+                    <li>Without intermediaries</li>
+                  </ul>
+                  <Paragraph>But finance does not operate in a vacuum.</Paragraph>
+                  <Paragraph>
+                    The moment a token represents <strong>real economic value</strong>, it collides with a world of:
+                  </Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>National laws</li>
+                    <li>Compliance regimes</li>
+                    <li>Jurisdictional boundaries</li>
+                  </ul>
+                  <Paragraph>This is where cross-border frictions emerge.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="core-regulatory-frictions">
+                  <Heading level={2}>The Core Regulatory Frictions</Heading>
+                  <Paragraph>Tokenized markets must navigate four major compliance layers:</Paragraph>
+                  <Paragraph>
+                    <strong>KYC (Know Your Customer)</strong>
+                  </Paragraph>
+                  <Paragraph className="pl-5">Identity verification of users</Paragraph>
+                  <Paragraph>
+                    <strong>AML (Anti–Money Laundering)</strong>
+                  </Paragraph>
+                  <Paragraph className="pl-5">Monitoring and reporting suspicious activity</Paragraph>
+                  <Paragraph>
+                    <strong>Travel Rule</strong>
+                  </Paragraph>
+                  <Paragraph className="pl-5">Sharing sender/receiver information between financial intermediaries</Paragraph>
+                  <Paragraph>
+                    <strong>Sanctions screening</strong>
+                  </Paragraph>
+                  <Paragraph className="pl-5">Blocking access from restricted individuals, entities, or countries</Paragraph>
+                  <Paragraph>Each layer is jurisdiction-specific — and often inconsistent across borders.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="why-cross-border-compliance-hard">
+                  <Heading level={2}>Why Cross-Border Compliance Is Harder Than It Sounds</Heading>
+                  <Paragraph>In traditional finance:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Institutions operate within defined jurisdictions</li>
+                    <li>Transfers move through regulated correspondent banks</li>
+                    <li>Compliance checks are centralized</li>
+                  </ul>
+                  <Paragraph>In tokenized systems:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Transfers are peer-to-peer</li>
+                    <li>Assets move continuously</li>
+                    <li>Platforms may not control every hop</li>
+                  </ul>
+                  <Paragraph>This creates a fundamental mismatch:</Paragraph>
+                  <Blockquote>Tokens move globally by default. Regulation does not.</Blockquote>
+                </section>
+
+                <Divider />
+
+                <section id="kyc-aml-identity">
+                  <Heading level={2}>KYC/AML: Identity in a Pseudonymous World</Heading>
+                  <Paragraph>Most blockchains are pseudonymous.</Paragraph>
+                  <Paragraph>This creates challenges:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Wallet addresses are not identities</li>
+                    <li>Users can interact across platforms</li>
+                    <li>Re-verification is often repeated or inconsistent</li>
+                  </ul>
+                  <Paragraph>For cross-border users:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Different KYC standards apply</li>
+                    <li>Documentation requirements vary</li>
+                    <li>Risk classifications differ</li>
+                  </ul>
+                  <Paragraph>The result is <strong>duplicated friction</strong>, not seamless access.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="travel-rule-on-chain">
+                  <Heading level={2}>The Travel Rule: Where On-Chain Simplicity Breaks</Heading>
+                  <Paragraph>The Travel Rule requires:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Sender and recipient information to accompany transfers</li>
+                    <li>Data sharing between regulated entities</li>
+                  </ul>
+                  <Paragraph>On-chain transfers:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Do not natively include identity metadata</li>
+                    <li>Can occur without intermediaries</li>
+                    <li>Move faster than compliance messaging systems</li>
+                  </ul>
+                  <Paragraph>This forces platforms to:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Restrict withdrawals</li>
+                    <li>Use whitelisted wallets</li>
+                    <li>Rely on off-chain messaging layers</li>
+                  </ul>
+                  <Paragraph>Global transferability becomes <strong>conditional</strong>, not open.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="sanctions-screening">
+                  <Heading level={2}>Sanctions Screening: Real-Time vs Immutable Ledgers</Heading>
+                  <Paragraph>Sanctions regimes change frequently.</Paragraph>
+                  <Paragraph>Challenges include:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Blacklisted addresses evolving over time</li>
+                    <li>Retroactive exposure on immutable ledgers</li>
+                    <li>Jurisdictional disagreements on enforcement</li>
+                  </ul>
+                  <Paragraph>
+                    A token transfer that is legal in one country may be illegal in another — instantly turning a
+                    compliant user into a blocked one.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="clash-24-7-vs-regulation">
+                  <Heading level={2}>The Clash: 24/7 Markets vs Fragmented Regulation</Heading>
+                  <Paragraph>Tokenized markets operate:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Always-on</li>
+                    <li>Globally accessible</li>
+                    <li>Without borders</li>
+                  </ul>
+                  <Paragraph>Regulation operates:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>By country</li>
+                    <li>With market hours</li>
+                    <li>Through licensed entities</li>
+                  </ul>
+                  <Paragraph>This leads to:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Geo-fencing</li>
+                    <li>Transfer restrictions</li>
+                    <li>Platform-level controls</li>
+                    <li>Uneven user experiences</li>
+                  </ul>
+                  <Paragraph>
+                    The promise of frictionless global finance meets the reality of <strong>regulatory patchwork</strong>.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="how-platforms-manage-risk">
+                  <Heading level={2}>How Platforms Try to Manage Cross-Border Risk</Heading>
+                  <Paragraph>Common approaches include:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Jurisdiction-based onboarding</li>
+                    <li>Wallet whitelisting</li>
+                    <li>Transfer limits</li>
+                    <li>Segmented liquidity pools</li>
+                    <li>Regional issuance structures</li>
+                  </ul>
+                  <Paragraph>These reduce risk — but also fragment liquidity and usability.</Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="why-matters-adoption">
+                  <Heading level={2}>Why This Matters for Adoption</Heading>
+                  <Paragraph>Cross-border frictions:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Increase operational costs</li>
+                    <li>Slow institutional adoption</li>
+                    <li>Confuse users</li>
+                    <li>Limit scalability</li>
+                  </ul>
+                  <Paragraph>
+                    For real-world asset tokenization, compliance friction often outweighs technical complexity.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="path-forward">
+                  <Heading level={2}>The Path Forward Is Not Deregulation</Heading>
+                  <Paragraph>This is not a call to remove regulation.</Paragraph>
+                  <Paragraph>It is a call for:</Paragraph>
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                    <li>Better interoperability between compliance systems</li>
+                    <li>Standardized identity frameworks</li>
+                    <li>Clear jurisdictional guidance</li>
+                    <li>Harmonized treatment of tokenized assets</li>
+                  </ul>
+                  <Paragraph>
+                    Until then, global tokenization will remain <strong>technically global, legally local</strong>.
+                  </Paragraph>
+                </section>
+
+                <Divider />
+
+                <section id="final-takeaway">
+                  <Heading level={2}>Final Takeaway</Heading>
+                  <Paragraph>
+                    Tokenized assets can move instantly across borders — but legal responsibility cannot.
+                  </Paragraph>
+                  <Paragraph>
+                    KYC, AML, travel rule, and sanctions screening create unavoidable cross-border frictions that clash
+                    with the promise of 24/7 global transferability.
+                  </Paragraph>
+                  <Paragraph>
+                    The future of tokenization will be shaped less by how fast tokens move — and more by{" "}
+                    <strong>how well compliance can move with them</strong>.
+                  </Paragraph>
+                </section>
+              </>
             ) : (
               <>
                 <section id="overview">
@@ -2164,6 +4033,7 @@ const ArticlePage = () => {
         </footer>
       </article>
     </PageShell>
+    </>
   );
 };
 

@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { PageShell } from "@/components/layout/PageShell";
 import { Heading } from "@/components/typography/Heading";
 import { Paragraph } from "@/components/typography/Paragraph";
+import { SEO } from "@/components/SEO";
 import { articles } from "@/content/articles";
 import { Link } from "react-router-dom";
 
@@ -11,9 +12,17 @@ const CategoryPage = () => {
   const categoryArticles = articles.filter((a) => a.category.toLowerCase() === normalized);
 
   const displayName = categoryArticles[0]?.category ?? slug;
+  const categorySlug = encodeURIComponent(displayName.toLowerCase());
 
   return (
-    <PageShell>
+    <>
+      <SEO
+        title={`${displayName} Articles`}
+        description={`Browse all ${displayName} articles and research on tokenization, RWA, and crypto markets. ${categoryArticles.length} article${categoryArticles.length !== 1 ? "s" : ""} available.`}
+        url={`/categories/${categorySlug}`}
+        canonicalUrl={`/categories/${categorySlug}`}
+      />
+      <PageShell>
       <section className="mb-6 space-y-3">
         <Heading level={1}>{displayName}</Heading>
         <Paragraph>Articles filed under this category.</Paragraph>
@@ -37,6 +46,7 @@ const CategoryPage = () => {
         </section>
       )}
     </PageShell>
+    </>
   );
 };
 

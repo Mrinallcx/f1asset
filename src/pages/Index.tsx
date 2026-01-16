@@ -1,6 +1,7 @@
 import { PageShell } from "@/components/layout/PageShell";
 import { Heading } from "@/components/typography/Heading";
 import { Paragraph } from "@/components/typography/Paragraph";
+import { SEO } from "@/components/SEO";
 import { articles, allCategories } from "@/content/articles";
 import type { ArticleMeta } from "@/content/articles";
 import { Link } from "react-router-dom";
@@ -11,10 +12,33 @@ const Index = () => {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 10);
 
+  const SITE_URL = import.meta.env.VITE_SITE_URL || "https://yourdomain.com";
+
+  // Structured data for website
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Minimal Crypto Journal",
+    url: SITE_URL,
+    description:
+      "Minimal crypto research journal focused on long-form analysis, tokenization, and real-world assets (RWA).",
+    publisher: {
+      "@type": "Organization",
+      name: "Minimal Crypto Journal",
+    },
+  };
+
   return (
-    <PageShell>
+    <>
+      <SEO
+        title="Crypto research, without the noise"
+        description="Long-form analysis for builders, investors, and operators who care more about signal than headlines."
+        url="/"
+        structuredData={structuredData}
+      />
+      <PageShell>
       <section className="mb-12 space-y-4">
-        <Heading level={1}>Crypto research, without the noise.</Heading>
+        <Heading level={1}>Research on tokenized assets</Heading>
         <Paragraph>
           Long-form analysis for builders, investors, and operators who care more about signal than headlines. Minimal
           layout, maximal clarity.
@@ -90,6 +114,7 @@ const Index = () => {
         </div>
       </section>
     </PageShell>
+    </>
   );
 };
 

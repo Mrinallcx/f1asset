@@ -15,6 +15,34 @@ export interface ArticleMeta {
 
 export const articles: ArticleMeta[] = [
   {
+    slug: "cross-border-frictions-in-tokenized-markets-when-24-7-global-transferability-meets-fragmented-regulation",
+    title: "Cross-Border Frictions in Tokenized Markets: When 24/7 Global Transferability Meets Fragmented Regulation",
+    subtitle:
+      "An examination of how regulatory compliance requirements create cross-border frictions in tokenized markets, despite the promise of seamless global transferability.",
+    date: "2025-03-30",
+    readingTimeMinutes: 8,
+    category: "Tokenization",
+    tags: ["Tokenization", "Regulation", "Compliance", "Cross-Border", "KYC", "AML"],
+    featured: false,
+    summary:
+      "An analysis of how KYC, AML, travel rule, and sanctions screening requirements create unavoidable cross-border frictions in tokenized markets, despite the technical promise of 24/7 global transferability.",
+    authorId: "research-desk",
+  },
+  {
+    slug: "do-on-chain-flows-lead-or-lag-price-discovery-tokenized-markets-vs-physical-and-futures-during-stress-events",
+    title: "Do On-Chain Flows Lead or Lag Price Discovery? Tokenized Markets vs Physical and Futures During Stress Events",
+    subtitle:
+      "An examination of whether on-chain tokenized silver markets lead or lag price discovery during stress events, and what this means for traders and market participants.",
+    date: "2025-03-25",
+    readingTimeMinutes: 9,
+    category: "Tokenize Silver",
+    tags: ["Tokenization", "Silver", "Price Discovery", "Markets", "Trading"],
+    featured: false,
+    summary:
+      "An analysis of price discovery dynamics in tokenized silver markets during stress events, examining whether on-chain flows lead or lag traditional physical and futures markets, and the implications for traders and risk managers.",
+    authorId: "research-desk",
+  },
+  {
     slug: "behind-the-scenes-custody-vaulting-and-audits-for-tokenized-silver",
     title: "Behind the Scenes: Custody, Vaulting, and Audits for Tokenized Silver",
     subtitle:
@@ -147,6 +175,84 @@ export const articles: ArticleMeta[] = [
     featured: false,
     summary:
       "An in-depth look at how tokenized assets function as collateral, enabling producers and traders to unlock new credit lines through faster, more efficient lending mechanisms in both DeFi and traditional finance.",
+    authorId: "research-desk",
+  },
+  {
+    slug: "concentration-risk-in-tokenized-assets-when-custody-issuance-and-trust-collapse-into-one-entity",
+    title: "Concentration Risk in Tokenized Assets: When Custody, Issuance, and Trust Collapse into One Entity",
+    subtitle: "Exploring how concentration risk emerges when a single entity controls custody, issuance, and verification in tokenized asset systems, and why this creates systemic vulnerabilities.",
+    date: "2025-02-25",
+    readingTimeMinutes: 9,
+    category: "Tokenize Silver",
+    tags: ["Tokenization", "Risk", "Custody", "RWA", "Security"],
+    featured: false,
+    summary:
+      "An analysis of concentration risk in tokenized assets, examining how single-entity control over custody, issuance, and verification creates systemic vulnerabilities and what can be done to mitigate these risks.",
+    authorId: "research-desk",
+  },
+  {
+    slug: "tokenized-silver-streams-how-tokens-enable-fractional-financing-of-mining-projects",
+    title: "Tokenized Silver Streams: How Tokens Enable Fractional Financing of Mining Projects",
+    subtitle: "Exploring how tokenized silver output and royalty tokens enable fractional participation in mining projects, transforming future production into investable financial instruments.",
+    date: "2025-03-01",
+    readingTimeMinutes: 8,
+    category: "Tokenize Silver",
+    tags: ["Tokenization", "Silver", "Mining", "RWA", "Finance"],
+    featured: false,
+    summary:
+      "An in-depth look at how tokenized silver streams, output tokens, and royalty tokens enable fractional financing of mining projects, allowing investors to participate in future silver production through digital tokens.",
+    authorId: "research-desk",
+  },
+  {
+    slug: "tokenization-and-junior-miners-how-capital-access-liquidity-and-risk-profiles-are-being-rewritten",
+    title: "Tokenization and Junior Miners: How Capital Access, Liquidity, and Risk Profiles Are Being Rewritten",
+    subtitle: "Examining how tokenization is reshaping capital access, liquidity, and risk profiles for junior mining companies, transforming traditional project finance models.",
+    date: "2025-03-05",
+    readingTimeMinutes: 9,
+    category: "Tokenize Silver",
+    tags: ["Tokenization", "Mining", "Finance", "RWA", "Capital"],
+    featured: false,
+    summary:
+      "A comprehensive analysis of how tokenization is changing capital access, liquidity, and risk profiles for junior mining companies, enabling new financing pathways and investor participation models.",
+    authorId: "research-desk",
+  },
+  {
+    slug: "metal-in-vault-vs-metal-in-the-ground-tokens-legal-and-operational-differences-that-matter",
+    title: "Metal-in-Vault vs Metal-in-the-Ground Tokens: Legal and Operational Differences That Matter",
+    subtitle: "Understanding the critical distinction between tokens backed by stored physical metal versus those representing future extraction or revenue streams, and why this matters for investors.",
+    date: "2025-03-10",
+    readingTimeMinutes: 8,
+    category: "Tokenize Silver",
+    tags: ["Tokenization", "Silver", "Legal", "RWA", "Risk"],
+    featured: false,
+    summary:
+      "A detailed comparison of metal-in-vault tokens versus metal-in-the-ground tokens, examining their legal structures, operational models, risk profiles, and regulatory treatment to help investors understand these fundamentally different instruments.",
+    authorId: "research-desk",
+  },
+  {
+    slug: "tokenized-silver-vs-futures-and-etfs-market-cap-trading-volumes-and-what-the-growth-really-means",
+    title: "Tokenized Silver vs Futures and ETFs: Market Cap, Trading Volumes, and What the Growth Really Means",
+    subtitle: "A data-driven comparison of tokenized silver markets versus traditional silver futures and ETFs, examining market caps, trading volumes, and what rapid growth percentages actually represent.",
+    date: "2025-03-15",
+    readingTimeMinutes: 7,
+    category: "Tokenize Silver",
+    tags: ["Tokenization", "Silver", "ETFs", "Markets", "Analysis"],
+    featured: false,
+    summary:
+      "An in-depth analysis comparing tokenized silver markets to traditional silver futures and ETFs, examining market capitalization, trading volumes, growth metrics, and what the numbers really mean for investors.",
+    authorId: "research-desk",
+  },
+  {
+    slug: "liquidity-reality-check-slippage-spreads-and-market-depth-in-tokenized-silver-vs-traditional-exchanges",
+    title: "Liquidity Reality Check: Slippage, Spreads, and Market Depth in Tokenized Silver vs Traditional Exchanges",
+    subtitle: "A detailed examination of liquidity metrics in tokenized silver markets, comparing slippage, bid-ask spreads, and market depth across DEXs, CEXs, and traditional silver exchanges.",
+    date: "2025-03-20",
+    readingTimeMinutes: 8,
+    category: "Tokenize Silver",
+    tags: ["Tokenization", "Silver", "Liquidity", "Markets", "Trading"],
+    featured: false,
+    summary:
+      "An in-depth analysis of liquidity in tokenized silver markets, examining slippage, spreads, and market depth compared to traditional exchanges, and what these metrics reveal about execution quality and market maturity.",
     authorId: "research-desk",
   },
 ];
